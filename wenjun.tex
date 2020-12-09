@@ -14,6 +14,9 @@
 \usepackage{graphicx}
 \usepackage[binary-units,per-mode=symbol]{siunitx}
 \usepackage{cite}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{subfigure}
 
 \def\UrlBreaks{\do\/\do-}
 
@@ -32,7 +35,7 @@
 
 
 \begin{document}
-\title{Social Distancing and the Internet: What Can Network Performance Measurements Tell Us?}
+\title{Internet Usage during COVID-19 in the US}
 
 \author{
     \IEEEauthorblockN{Jessica Moreira}
@@ -93,13 +96,11 @@ Finally, according to Frankel \cite{frankel}, the average down streams in urban 
 
 % TODO: Add subsection about privacy and ethical considerations, discussing how our analyses fit into these.
 
-The Federal Communications Commission (FCC) runs the program Measuring Broadband America (MBA) which collects data about the broadband Internet usage and performance in the US \cite{mba}. The FCC has approximately 4,000 to 5,000 volunteers in program and each of them receives a Whitebox when signing up from the program. These devices are provided by SamKnows and are used to measure the performance and the overall volunteers' use of their broadband Internet connection \cite{sam}. The Whitebox performs active and passive measurements and generates data that is collected and reported by the FCC. All deployed Whiteboxes generate approximately \SI{20}{\giga\byte} of data per month. The FCC makes the collected data publicly available on their website \cite{data}.
+The Federal Communications Commission (FCC) runs a program called Measuring Broadband America (MBA) which measures the broadband Internet usage and performance in the US \cite{mba}. The FCC selected around 4,000 to 5,000 volunteers with a broadband Internet connection. Each volunteer receives a Whitebox, a dedicated device provided by SamKnows in order to measure the performance of their broadband Internet connection \cite{sam}. The Whitebox performs active and passive measurements and generates data that is collected by the FCC. All deployed Whiteboxes generate approximately \SI{20}{\giga\byte} of data per month. The FCC makes the collected data publicly available on their website \cite{data}.
 
-Since 2011, the FCC has been publishing annual reports that summarize the state of the US broadband performance based on analysis made of the collected data and additional information cross-validated from the selected broadband Internet Service Providers (ISPs) from four different regions of the country. This information included in the reports represents approximately \SI{80}{\percent} of the total US population \cite{mba-studies}. Currently, the FCC has been able to make initial analysis about the impacts of COVID-19 on Intern usage in the US using the MBA raw data. The preliminary results released by the FCC was related to the change in latency since the beginning of March. 
+Since 2011, the FCC has been publishing annual reports that summarize the state of the US broadband performance. The reports are based on the collected data and additional information collected and cross-validated from the selected broadband Internet Service Providers (ISPs) from four different regions of the country. This information included in the reports represents approximately \SI{80}{\percent} of the total US population \cite{mba-studies}.
 
-For this study, we mainly used the collected MBA (raw) data to analyze the changes in Internet usage caused by COVID-19. We worked with the data collected from January 2019 to June 2020, and by analyzing these data sets, we were aiming to understand not only how Internet usage has changed, but also how people's behavior using  Internet has changed after the stay-at-home orders took place throughout the US in early March. For the analysis generated about the population demographics, besides using the raw data, we also used integrated open-source 2019 US Census population data sets in order to obtain user county population data. For the analysis present in the other sessions, we used mainly the raw MBA data which contains different types of information related to Internet usage, such as values of data downloaded and uploaded, Internet speed, latency and packet loss. 
-
-It is important to notice that this study aligns with the ethical expectations of academic research, since it does not disclose private information. All data used in our analysis is public and can be openly accessed on FCC's website.  
+For this study, we focused on using the collected MBA (raw) data to analyze the changes in Internet usage caused by COVID-19. We worked with the data collected from January 2019 to March 2020. By analyzing these data sets, we were aiming to understand not only how Internet usage has changed due to COVID-19, but also how people's behavior using  Internet has changed after the stay at home orders took place throughout the US in early March.
 
 \section{Methodology}
 \label{sec:methodology}
@@ -152,6 +153,25 @@ Similarly to the average downloaded data analysis, while computing the average a
 Therefore, it can be concluded that the COVID-19 changed Internet usage in the US in the first quarter of 2020. The increase in the averages of data downloaded and uploaded per consumer from January to March in 2020 explicitly shows that there was an outside event that impacted the usage of Internet making it higher than it would be expected based on the trends of Internet consumption established from January to March of 2019. Since there was not any other major event influencing  Internet usage in March 2020, it is possible to conclude that this increase in the average amount of data downloaded and uploaded happened due to COVID-19, since people were using Internet more while they were complying to stay at home orders and quarantining.
 
 \subsection{Average Speed}
+
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/test.png}
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/test.png}
+%   \centering
+%   \includegraphics[width=0.5\textwidth]{figs/wenjun/download_compare.png}
+
+%   \begin{scriptsize}\hspace*{-1em}
+%   \begin{tabular}{l}
+%     TODO
+%   \end{tabular}
+%   \end{scriptsize}
+%   \vspace*{-1em}
+%   \caption{caption: TODO.}
+%     \vspace*{-1em}
+%   \label{fig:top1-scores}  
+% \end{figure*}
+
 \label{sec:average-speed}
 Besides analyzing the average amount of data downloaded and uploaded per consumer in 2020, we also analyzed how the average speed experienced by consumers changed due to COVID-19. By knowing that the average value of data used per user increased significantly, it could be expected a change in the average speed that people experienced in the middle of quarantine, since ISPs could not be ready to adapt and supply the same average speed to all users, considering the expressive increase in data downloaded and uploaded.
 
@@ -230,6 +250,10 @@ Moreover, another possible explanation for those who experienced no change in th
 \label{fig:heavyup}
 \end{figure}
 
+% wenjunchen
+\subsection{Average Data Usage per Users over Hours on Each Month}
+We study the average data usage per users over hours on each month by comparing the average data usage on weekdays or weekends, and before COVID-19 or after COVID-19 based on both download data and upload data. Since the recorded time in data set is finished in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by 24. (2) For month, if the value of hour in local time is negative and the day is 1, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values. 
+
 % Downloaded MB
 \begin{figure*}[t]
   \centering
@@ -245,26 +269,6 @@ Moreover, another possible explanation for those who experienced no change in th
     \vspace*{-1em}
   \label{fig:download-data-per-user-hours-fig}  
 \end{figure*}
-
-% wenjunchen
-\subsection{Average Data Usage per Users over Hours on Each Month}
-We study the average data usage per users over hours on each month by comparing the average data usage on weekdays or weekends, and before COVID-19 or after COVID-19 based on both download data and upload data. Since the recorded time in data set is finished in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by 24. (2) For month, if the value of hour in local time is negative and the day is 1, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values. 
-
-% % Downloaded MB
-% \begin{figure*}[t]
-%   \centering
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_before.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wends_before.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_after.png}
-%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_after.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_compare.png}
-%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_compare.png}
-
-%   \vspace*{-1em}
-%   \caption{TODO: Download data.}
-%     \vspace*{-1em}
-%   \label{fig:download-data-per-user-hours-fig}  
-% \end{figure*}
 
 \subsubsection{Average Download Data per User}
 \label{sec:download-data-per-user-over-hours}
@@ -295,6 +299,25 @@ Moreover, according to the two graphs at the third row in Figure \ref{fig:downlo
 The upload data is the number of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet. As shown in the Figure \ref{fig:upload_data_per_user_hours_fig}, compare with the pattern in average download data, the lines in the upload data graph is more fluctuating, especially the pattern for the upload data on weekends. 
 
 \textbf{TODO: need more analysis (not sure yet); updating the comparison graph}
+
+
+% (This part may not be important, can't show the difference between after covid-19 and before covid-19)
+% \subsubsection{Average Download Data v.s. Average Upload Data}
+% \label{sec:download_upload_comparison}
+
+% We compare the average number of download data and that of upload data per user over hours after COVID-19 on both weekdays and weekends. As shown in Figure \ref{fig:download_upload_compare}, we can see that the average number of download data is much larger than that of upload data. 
+
+% % Comparison
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/weekdays_comparison.png}
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/weekends_comparison.png}
+
+%   \vspace*{-1em}
+%   \caption{caption: Comparison.}
+%     \vspace*{-1em}
+%   \label{fig:download_upload_compare}  
+% \end{figure*}
 
 \section{Challenges}
 \label{sec:challenges}
