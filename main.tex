@@ -74,7 +74,7 @@ The COVID-19 outbreak has changed the way that people interact. With the new sta
 \section{Introduction}
 \label{sec:introduction}
 
-Much has been written about whether the residential internet infrastructure in the United States can cope with the sudden conversion of work into telework, school into distance learning and movies into Netflix binging, albeit usually based on data of dubious quality. But network measurements may also tell us about the effort and success of social distancing, the ability of different communities to move to internet-mediated modes of interaction and their sustainability.
+Much has been written about whether the residential internet infrastructure in the United States can cope with the sudden conversion of work into tele-work, school into distance learning and movies into Netflix binging, albeit usually based on data of dubious quality. But network measurements may also tell us about the effort and success of social distancing, the ability of different communities to move to internet-mediated modes of interaction and their sustainability.
 
 We attempt to address both questions in this paper. First, we describe some of the sampling bias limitations of classical user-initiated network speed measurements in estimating how well infrastructure holds up during shifts in usage. For example, seeming reductions in speed may be caused by increased Wi-Fi interference or simply by increased usage by people who have lower internet speeds, whether by deliberate choice, availability or affordability.
 
@@ -82,7 +82,7 @@ We then draw on the FCC Measuring Broadband America (MBA) raw data, available lo
 
 At least as important as measuring the impact of COVID-19 on internet performance is using indirect metrics, such as internet usage, to estimate the success of social distancing measures, while maintaining user privacy. We draw on two metrics to explore whether we can detect the daytime and evening usage of residential internet users, indicating home schooling and work from home, as well as observance of stay-at-home orders on weekends. MBA suspends throughput measurements during periods of significant usage, such as video conferencing, and also tabulates total use. Thus, we might be able to deduce when households are actively using their broadband connection and whether such usage reflects, for example, the earlier restrictions imposed in Washington State or in the New York City metro area.
 
-The measurement data has known limitations. For example, it only covers the largest ISPs and omits fixed wireless and satellite providers, the latter by their choice. We describe how more systematic data gathering during both short-termer natural disasters and long-term epidemics could supplement our understanding of how households deal with such crises, providing information to policy makers in near real-time and in a privacy-respecting manner.
+The measurement data has known limitations. For example, it only covers the largest ISPs and omits fixed wireless and satellite providers, the latter by their choice. We describe how more systematic data gathering during both short-term natural disasters and long-term epidemics could supplement our understanding of how households deal with such crises, providing information to policy makers in near real-time and in a privacy-respecting manner.
 
 % Due to government imposed lockdowns, a large percentage of the population had to depend in residential broadband internet connection for work, entertainment, education, and social activities.
 
@@ -95,21 +95,33 @@ In the following sections of the paper we present related work about the impacts
 \section{Related Work}
 \label{sec:related-work}
 
-As of November 2020, a small number of internet traffic studies looking at the effects of lockdowns have already been published. The studies generally look at traffic trends and patterns from a variety of vantage points and attempt to correlated those with peoples' behavior during government-imposed restrictions.
+A small number of studies focusing at the effects of lockdowns on internet infrastructure have already been published as of November 2020. These studies typically look at traffic trends and patterns from various vantage points. Some look for signs of stress in internet infrastructure, others attempt to correlate traffic data with user behavior during lockdowns.
 
-Feldmann et al. studied the effects of lockdowns on residential internet traffic using data obtained from ISPs and Internet Exchange Points (IXP) in Europe and the US East Coast\cite{feldmann2020lockdown}. They found that residential traffic increased by 15-20\% after lockdowns and that remote work and education applications saw a 200\% increase in traffic. The regular weekday traffic pattern morphed into a weekend-like pattern with a significant traffic increase starting in the morning, from mid-March until roughly mid-May.
+Feldmann et al. studied the effects of lockdowns on internet traffic using traffic data from several ISPs and Internet Exchange Points (IXP) in Europe and the US East Coast\cite{feldmann2020lockdown}. They found that residential traffic increased by 15-20\% after lockdowns and that remote work and education applications saw a 200\% increase in traffic. The regular weekday traffic pattern morphed into a weekend-like pattern with a significant traffic increase starting in the morning, from mid-March until roughly mid-May.
 
-B\"{o}ttger et al. studied lockdown effects using data from Facebook's global edge network \cite{bottger2020internet}. The authors observed a significant traffic increase in the second half of March and found regional correlations between traffic growth and the spread of Covid-19 in the region. Traffic growth was more pronounced on broadband than on mobile networks. Using data from Facebook's video service, the authors found that globally the internet was able to keep up with the increased demand, with a degradation in quality of user experience in some regions such as India and South Africa. The degradation can be attributed to limited capacity and last-mile network congestion in those countries.
+B\"{o}ttger et al. studied similar effects using data from Facebook's global edge network \cite{bottger2020internet}. They observed a traffic increase in the second half of March and found regional correlations between traffic growth and the spread of COVID-19 in the region. The data from Facebook's video services showed a degradation in quality of user experience in India and South Africa. Authors attribute the degradation to limited capacity and last-mile network congestion in those countries.
 
-OpenVault saw a 40\% broadband traffic increase in the third quarter of 2020 over the third quarter of 2019, but less than 1\% over the second quarter of 2020 \cite{openvault}. This represents a considerable Covid-19 broadband traffic growth since 2019 which plateaued in 2020, indicating that a new normal for broadband bandwidth usage may have been established. The traffic growth of usage-based billing accounts outpaced flat rate billing accounts when broadband providers relaxed data usage quotas.
-
-Ofcom reports that UK broadband service providers were generally able to keep up with the demand in March, with only a 1-2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}.
-
-SamKnows, the manufacturer of the Whitebox broadband monitoring device, published a series of articles about the state of the critical infrastructure on their blog \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. The observations by Whiteboxes installed in UK and the US and show only slightly worse average download speeds and round trip times.
-
-Liu et al. found a 30-60\% increase in peak traffic volumes in the US, a statistically significant increase in average latency of 10\% for two months, and ISPs adding interconnect capacity at more than twice the usual rate \cite{liu2020characterizing}.
+Liu et al. found a 30-60\% increase in peak traffic volumes in the US, a statistically significant increase of 10\% in average latency over two months, and ISPs adding interconnect capacity at more than twice the usual rate \cite{liu2020characterizing}.
 
 \nocite{lutu2020characterization}
+
+Several broadband market reports analyze the state of broadband infrastructure during lockdowns. OpenVault saw a 40\% broadband traffic increase in 3Q 2020 over 2019, but less than 1\% over 2Q 2020 \cite{openvault}. Traffic growth plateaued in 2020, indicating a new normal for broadband bandwidth usage. Temporarily relaxed data usage quota resulted in faster growth of usage-based accounts compared to flat rate accounts. Ofcom reports that UK broadband service providers were generally able to keep up with the demand in March, with only a 1-2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}. SamKnows published a series of articles about the state of the critical infrastructure \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. Their observations in UK and the US show only slightly worse average download speeds and round trip times during lockdown.
+
+% AT&T: https://about.att.com/pages/COVID-19.html
+% Comcast: https://corporate.comcast.com/covid-19/network/may-20-2020
+% CTIA: https://www.ctia.org/covid-19
+% Spectrum: https://www.spectrum.net/page/covid-19-update
+% NCTA: https://www.ncta.com/COVIDdashboard
+% Nokia: https://www.nokia.com/blog/redoing-the-math-the-impact-of-covid-19-on-broadband-networks/
+% Sandvine: https://www.sandvine.com/covid-19-trends
+
+% Google: https://blog.google/inside-google/infrastructure/keeping-our-network-infrastructure-strong-amid-covid-19/
+% Akamai: https://blogs.akamai.com/sitr/2020/04/parts-of-a-whole-effect-of-covid-19-on-us-internet-traffic.html
+% Facebook: https://about.fb.com/news/2020/03/keeping-our-apps-stable-during-covid-19/
+
+% FCC Keep Americans Connected: https://www.fcc.gov/keep-americans-connected
+
+% NANOG: https://storage.googleapis.com/site-media-prod/documents/20200601_Labovitz_Effects_Of_Covid-19_v1.pdf
 
 %\nocite{partridge2003internet}
 
