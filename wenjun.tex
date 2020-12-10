@@ -17,6 +17,7 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{subfigure}
+\usepackage{subcaption}  
 
 \def\UrlBreaks{\do\/\do-}
 
@@ -254,28 +255,79 @@ Moreover, another possible explanation for those who experienced no change in th
 \subsection{Average Data Usage per Users over Hours on Each Month}
 We study the average data usage per users over hours on each month by comparing the average data usage on weekdays or weekends, and before COVID-19 or after COVID-19 based on both download data and upload data. Since the recorded time in data set is finished in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by 24. (2) For month, if the value of hour in local time is negative and the day is 1, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values. 
 
-% Downloaded MB
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wends_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_after.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_after.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_compare.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_compare.png}
+% % Downloaded MB
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_before.png}
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wends_before.png}
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_after.png}
+%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_after.png}
+%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_compare.png}
+%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_compare.png}
 
-  \vspace*{-1em}
-  \caption{TODO: Download data.}
-    \vspace*{-1em}
-  \label{fig:download-data-per-user-hours-fig}  
+%   \vspace*{-1em}
+%   \caption{TODO: Download data.}
+%     \vspace*{-1em}
+%   \label{fig:download-data-per-user-hours-fig}  
+% \end{figure*}
+
+\begin{figure*}[t]
+\centering
+
+\subfigure[Average Number of Download Data per User over Hour Before COVID-19 on Weekdays.]{
+
+\begin{minipage}[t]{0.48\textwidth}
+\centering\captionsetup{width=.8\linewidth}%
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wdays_before.png}
+%\caption{fig1}
+\end{minipage}%
+}%
+\subfigure[Average Number of Download Data per User over Hour Before COVID-19 on Weekends.]{
+\begin{minipage}[t]{0.48\textwidth}
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wends_before.png}
+%\caption{fig2}
+\end{minipage}%
+}%
+
+\subfigure[Average Number of Download Data per User over Hour After COVID-19 on Weekdays.]{
+\begin{minipage}[t]{0.5\linewidth}
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wdays_after.png}
+%\caption{fig2}
+\end{minipage}
+}%
+\subfigure[Average Number of Download Data per User over Hour After COVID-19 on Weekends.]{
+\begin{minipage}[t]{0.5\linewidth}
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wends_after.png}
+%\caption{fig2}
+\end{minipage}
+}%
+
+\subfigure[Average Number of Download Data per User over Hour on Weekdays.]{
+\begin{minipage}[t]{0.5\linewidth}
+% \centering
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wdays_compare.png}
+%\caption{fig1}
+\end{minipage}%
+% \label{fig:download-wdays-compare} 
+}%
+\subfigure[Average Number of Download Data per User over Hour on Weekends.]{
+\begin{minipage}[t]{0.5\linewidth}
+% \centering
+\includegraphics[width=1\textwidth]{figs/wenjun/download_wends_compare.png}
+%\caption{fig2}
+\end{minipage}%
+}%
+
+\caption{Graphs related to Average Number of Download Data per Users over Hours on each Month. There is a peak between 18:00p.m. and 22:00p.m., which is the internet rush hour.}
+\label{fig:download-data-per-user-hours-fig} 
 \end{figure*}
 
 \subsubsection{Average Download Data per User}
 \label{sec:download-data-per-user-over-hours}
 
-The download data is the number of bytes that the customer received from the internet to wired LAN devices and the Wi-Fi devices. As shown in the Figure \ref{fig:download-data-per-user-hours-fig}, we can find that the patterns of download data usage are the same on weekdays and weekends whether before COVID-19 or after COVID-19. There is a peak between 18:00p.m. and 22:00p.m. \textbf{(TODO: why people always use more internet after dinner? Entertainment? Need more research)}
+The download data is the number of bytes that the customer received from the internet to wired LAN devices and the Wi-Fi devices. As shown in the Figure 10, we can find that the patterns of download data usage are the same on weekdays and weekends whether before COVID-19 or after COVID-19. There is a peak between 18:00p.m. and 22:00p.m., which is the internet rush hour\cite{internetrushhour}. People like to watch streaming video after work or dinner from YouTube, Netflix, and so on, and these streaming videos result in a huge amount of download data. 
 
-Moreover, according to the two graphs at the third row in Figure \ref{fig:download-data-per-user-hours-fig}, the average download data per user over hour after COVID-19 (red) is larger than that before COVID-19 (blue). On weekdays, the gaps between red lines and blue lines from 8:00 a.m. to 22:00 p.m. are more obvious that those from 22:00 p.m. to 8:00 a.m. next day. The increase from 8:00 a.m. to 18:00 p.m. may be because of work from home or online courses, and the increase from 18:00 p.m. to 22:00 p.m. may be because people can not hangout with their friends or have less outdoor activities because of social distancing and quarantine. Instead, people need to stay at home and may watch movie, play video games, and so on. Besides, people have poorer efficiency because of quarantine, and they may need more time to finish their work after dinner as well. \textbf{(TODO: need reference)} From 22:00 p.m. to 8:00 a.m. next day, it is time for rest so the average number of download data per user after COVID-19 does not have too much difference with that before COVID-19. On weekends, the difference between red lines and blue lines at daytime is not that obvious but the gap from 18:00 p.m. to 22:00 p.m. is still pretty larger, especially on May \textbf{(TO DO: why May?)}. People have a rest on weekends, so the usage of internet is less at daytime. After dinner, people need internet for their entertainment time. Therefore, we can conclude that people use more internet and download more data after COVID-19.
+Moreover, according to the Figure \ref{fig:download-wdays-compare} and Figure \ref{fig:download-wends-compare}, the average download data per user over hour after COVID-19 (red) is larger than that before COVID-19 (blue). On weekdays, the gaps between red lines and blue lines from 8:00 a.m. to 22:00 p.m. are more obvious that those from 22:00 p.m. to 8:00 a.m. next day. The increase from 8:00 a.m. to 18:00 p.m. may be because of work from home or online courses, and the increase from 18:00 p.m. to 22:00 p.m. may be because people cannot hangout with their friends or have less outdoor activities because of social distancing and quarantine. Instead, people need to stay at home and may watch movie, play video games, and so on. From 22:00 p.m. to 8:00 a.m. next day, it is time for rest so the average number of download data per user after COVID-19 does not have too much difference with that before COVID-19. On weekends, the difference between red lines and blue lines at daytime is not that obvious and there are some overlapping between red lines and blue lines. However, on May, the gap from 18:00 p.m. to 22:00 p.m. is still pretty large. [\textbf{TODO: hard to explain. need to update comparison graphs}] Therefore, we can conclude that people use more internet and download more data after COVID-19.
 
 % Uploaded MB
 \begin{figure*}[t]
@@ -296,9 +348,9 @@ Moreover, according to the two graphs at the third row in Figure \ref{fig:downlo
 \subsubsection{Average Upload Data per User}
 \label{sec:upload-data-per-user-over-hours}
 
-The upload data is the number of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet. As shown in the Figure \ref{fig:upload_data_per_user_hours_fig}, compare with the pattern in average download data, the lines in the upload data graph is more fluctuating, especially the pattern for the upload data on weekends. 
+The upload data is the number of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet. As shown in the Figure \ref{fig:upload_data_per_user_hours_fig}, compare with the pattern in average download data, the lines in the upload data graph are more fluctuating, especially the pattern for the upload data on weekends. 
 
-\textbf{TODO: need more analysis (not sure yet); updating the comparison graph}
+We compare the average number of upload data from March to June in 2020, which is the period after COVID-19, with that from March to June in 2019. According to the Figure 11 (e) and Figure 11 (f), we can see that in April and May, the average number of upload data per user over hour in 2020 is larger than that in 2019. Quarantine and lockdown mainly occupied in April and May. People need to stay at home and may need to use more internet for work from home, entertainment, and so forth in their lives. Since quarantine mainly happened at the end of March and in June, many places were reopened and people’s lives started to back to normal, the average number of upload data per user over hour in 2020 is not always larger than that in 2019. Therefore, quarantine increase the people’s usage of internet. 
 
 
 % (This part may not be important, can't show the difference between after covid-19 and before covid-19)
