@@ -37,7 +37,7 @@
 \author{
     \IEEEauthorblockN{
         \href{mailto:jdm2240@barnard.edu}{\color{black}Jessica Moreira}\IEEEauthorrefmark{1},
-        \href{mailto:app2149@columbia.edu}{\color{black}Amey Praveen Pasarkar}\IEEEauthorrefmark{2},
+        \href{mailto:amey.pasarkar@columbia.edu}{\color{black}Amey Praveen Pasarkar}\IEEEauthorrefmark{2},
         \href{mailto:wc2741@columbia.edu}{\color{black}Wenjun Chen}\IEEEauthorrefmark{2},
         \href{mailto:wh2453@columbia.edu}{\color{black}Kerry Hu}\IEEEauthorrefmark{2},
         \href{mailto:janakj@cs.columbia.edu}{\color{black}Jan Janak}\IEEEauthorrefmark{3},
@@ -55,7 +55,7 @@
     Email:
     jdm2240@barnard.edu,
     \{%
-      \href{mailto:app2149@columbia.edu}{\color{black}app2149},%
+      \href{mailto:amey.pasarkar@columbia.edu}{\color{black}amey.pasarkar},%
       \href{mailto:wc2741@columbia.edu}{\color{black}wc2741},%
       \href{mailto:wh2453@columbia.edu}{\color{black}wh2453}%
     \}@columbia.edu,
@@ -68,7 +68,7 @@
 \maketitle
 
 \begin{abstract}
-The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, most activities that people were used to changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the US were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 impacted internet usage in the US. While analyzing the fixed broadband raw data sets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
+The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, most activities that people were used to changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the United States were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 impacted internet usage in the  United States. While analyzing the fixed broadband raw data sets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
 \end{abstract}
 
 \section{Introduction}
@@ -116,11 +116,13 @@ NCTA reports a usage growth of 30\% (downstream) and 50\% (upstream) since March
 
 Kovacs compared the performance of fixed broadband internet during the pandemic in the US and in Europe \cite{kovacs}. Using data collected by the company Ookla, the author found that US fixed broadband networks generally performed better than similar European peers, offering 30-30\% higher mean download speed. Kovacs attributes the difference to bigger long term investments in telecommunications infrastructure, more favorable mix of technologies, and lighter-touch regulatory approach in the US.
 
-Moreover, the article \textit{Stealth CEO: Asymmetric broadband speeds cause strain during work from home efforts} \cite{robuck} points out that people who are currently working from home have faced some challenges to open all their work applications and have been using more cloud services. According to Robuck, internet traffic caused by these cloud services increased 32\% since staying-home orders started in the country. Moreover, it has been confirmed that people have experienced an asymmetrical connection which has directly slowed the upstream speed.
+Another article \textit{Stealth CEO: Asymmetric broadband speeds cause strain during work from home efforts} \cite{robuck} points out that people who are currently working from home have faced some challenges to open all their work applications and have been using more cloud services. According to Robuck, internet traffic caused by these cloud services increased 32\% since staying-home orders started in the country. Moreover, it has been confirmed that people have experienced an asymmetrical connection which has directly slowed the upstream speed.
 
 In addition to that, according to the article \textit{COVID-19: How Cable's Internet Networks Are Performing} \cite{ncta}, since March 1st, the downstream peak in the US increased by 8.4\% while the upstream peak increased by 23.1\%. In addition to that, the conducted study showed that the upstream peak hours shifted from evenings to afternoons and that a more local analysis showed that in New York state these numbers increased by 9\% and 23.4\% respectively.
 
-Finally, according to Frankel \cite{frankel}, the average down streams in urban spaces in March 16th was \SI{5.1}{\giga\byte} - more than double of the down streams value registered nine weeks before. In addition to that, Frankel affirms that according to Nilsen, video streaming consumption increased 61\% in the US since early March.
+Moreover, according to Frankel \cite{frankel}, the average down streams in urban spaces in March 16th was \SI{5.1}{\giga\byte} - more than double of the down streams value registered nine weeks before. In addition to that, Frankel affirms that according to Nilsen, video streaming consumption increased 61\% in the US since early March.
+
+Finally, while most research focused on the Internet traffic and observed an surge during lockdown, Lutu et al. \cite{lutu2020mobile} studied the mobile network operator (MNO) traffic and analyzed Covid19's impact on user’s mobility behavior. They captured an overall deduction in UK’s mobility data following government’s ‘stay-at-home’ order being enforced, indicating that people’s movement got significantly decreased after lockdown. In specific, they analyzed the variation composition, with an decrease in cellular data traffic volume while a surge in the conversational voice traffic volume.
 
 \section{Datasets}
 \label{sec:datasets}
@@ -131,21 +133,25 @@ The Federal Communications Commission (FCC) runs the program Measuring Broadband
 
 Since 2011, the FCC has been publishing annual reports that summarize the state of the US broadband performance. The reports are based on the collected data and additional information collected and cross-validated from the selected broadband Internet Service Providers (ISPs) from four different regions of the country. This information included in the reports represents approximately 80\% of the total US population \cite{mba-studies}.
 
-For this study, we mainly used the collected MBA (raw) data to analyze the changes in internet usage caused by COVID-19. We worked with the data collected from January 2019 to June 2020, and by analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's behavior using  internet has changed after the stay-at-home orders took place throughout the US in early March. For the analysis generated about the population demographics, besides using the raw data, we also used integrated open-source 2019 US Census population data sets in order to obtain user county population data. For the analysis present in the other sessions, we used mainly the raw MBA data which contains different types of information related to internet usage, such as values of data downloaded and uploaded, internet speed, latency and packet loss.
+For this study, we used the collected MBA (raw) data to analyze the changes in internet usage caused by COVID-19. We worked with data collected from January 2019 to June 2020, and by analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's internet usage behavior has changed over the course of the pandemic.  Analysis that involved population demographic information required the integration of 2019 US Census population data sets that provide county-level population information. For the analysis present in the other sections, we used mainly the raw MBA data which contains different types of information related to internet usage, such as values of data downloaded and uploaded, internet speed, latency and packet loss.
 
 It is important to notice that this study aligns with the ethical expectations of academic research, since it does not disclose private information. All data used in our analysis is public and can be openly accessed on FCC's website.
 
 \section{Methodology}
 \label{sec:methodology}
 
-In order to analyze the impacts of COVID-19 on internet usage, it was necessary to process and analyze data from January 2019 to March 2020. We analyzed approximately \SI{300}{\giga\byte} of data and considering how big the data sets were, it would be difficult to process them all and complete the project through a normal computer. Thus, after a careful consideration, we decided to use a virtual machine on Google Cloud to process all the data.
+In order to analyze the impacts of COVID-19 on internet usage, it was necessary to process and analyze data from January 2019 to June 2020. The entire data set was approximately \SI{300}{\giga\byte}, requiring the use of big data workflows. We therefore used a virtual machine on Google Cloud to perform all processing and analysis.
 
-We used BigQuery on Google Cloud in order to upload each monthly data set from the FCC website and storage them. We also used the virtual machine to analyze the data sets through Datalab - an environment that gives access to Jupyter Notebooks - and we worked with Python in order to complete the analysis. Moreover, we used Git Repository to storage the Jupyter notebooks used.
-
+We specifically used Google Cloud's BigQuery for data storage of each monthly data set. Analysis was performed through Datalab, an environment that gives access to Jupyter Notebooks. Scripts were written in Python and workflows were documented using Git repositories. 
+\input{amey_methods.tex}
+\input{wenjun_methods}
 
 \section{Data Analysis}
 \label{sec:data-analysis}
 \input{amey.tex}
+
+\input{wenjun}
+
 \subsection{The Data Consumption}
 \label{sec:the-data-consumption}
 In this sub-section we present the results that show how COVID-19 changed the amount of average data downloaded and uploaded per user.
@@ -264,72 +270,6 @@ Moreover, another possible explanation for those who experienced no change in th
 \label{fig:heavyup}
 \end{figure}
 
-% Downloaded MB
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wends_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_after.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_after.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_compare.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_compare.png}
-
-  \vspace*{-1em}
-  \caption{TODO: Download data.}
-    \vspace*{-1em}
-  \label{fig:download-data-per-user-hours-fig}
-\end{figure*}
-
-% wenjunchen
-\subsection{Average Data Usage per Users over Hours on Each Month}
-We study the average data usage per users over hours on each month by comparing the average data usage on weekdays or weekends, and before COVID-19 or after COVID-19 based on both download data and upload data. Since the recorded time in data set is finished in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by 24. (2) For month, if the value of hour in local time is negative and the day is 1, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values.
-
-% % Downloaded MB
-% \begin{figure*}[t]
-%   \centering
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_before.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wends_before.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_after.png}
-%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_after.png}
-%   \includegraphics[width=.49\textwidth]{figs/wenjun/download_wdays_compare.png}
-%   \includegraphics[width=0.49\textwidth]{figs/wenjun/download_wends_compare.png}
-
-%   \vspace*{-1em}
-%   \caption{TODO: Download data.}
-%     \vspace*{-1em}
-%   \label{fig:download-data-per-user-hours-fig}
-% \end{figure*}
-
-\subsubsection{Average Download Data per User}
-\label{sec:download-data-per-user-over-hours}
-
-The download data is the number of bytes that the customer received from the internet to wired LAN devices and the Wi-Fi devices. As shown in the Figure \ref{fig:download-data-per-user-hours-fig}, we can find that the patterns of download data usage are the same on weekdays and weekends whether before COVID-19 or after COVID-19. There is a peak between 18:00p.m. and 22:00p.m. \textbf{(TODO: why people always use more internet after dinner? Entertainment? Need more research)}
-
-Moreover, according to the two graphs at the third row in Figure \ref{fig:download-data-per-user-hours-fig}, the average download data per user over hour after COVID-19 (red) is larger than that before COVID-19 (blue). On weekdays, the gaps between red lines and blue lines from 8:00 a.m. to 22:00 p.m. are more obvious that those from 22:00 p.m. to 8:00 a.m. next day. The increase from 8:00 a.m. to 18:00 p.m. may be because of work from home or online courses, and the increase from 18:00 p.m. to 22:00 p.m. may be because people can not hangout with their friends or have less outdoor activities because of social distancing and quarantine. Instead, people need to stay at home and may watch movie, play video games, and so on. Besides, people have poorer efficiency because of quarantine, and they may need more time to finish their work after dinner as well. \textbf{(TODO: need reference)} From 22:00 p.m. to 8:00 a.m. next day, it is time for rest so the average number of download data per user after COVID-19 does not have too much difference with that before COVID-19. On weekends, the difference between red lines and blue lines at daytime is not that obvious but the gap from 18:00 p.m. to 22:00 p.m. is still pretty larger, especially on May \textbf{(TO DO: why May?)}. People have a rest on weekends, so the usage of internet is less at daytime. After dinner, people need internet for their entertainment time. Therefore, we can conclude that people use more internet and download more data after COVID-19.
-
-% Uploaded MB
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.49\textwidth]{figs/wenjun/upload_wdays_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/upload_wends_before.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/upload_wdays_after.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/upload_wends_after.png}
-  \includegraphics[width=.49\textwidth]{figs/wenjun/upload_wdays_compare_36.png}
-  \includegraphics[width=0.49\textwidth]{figs/wenjun/upload_wends_compare_36.png}
-
-  \vspace*{-1em}
-  \caption{TODO: Upload Data.}
-    \vspace*{-1em}
-  \label{fig:upload_data_per_user_hours_fig}
-\end{figure*}
-
-\subsubsection{Average Upload Data per User}
-\label{sec:upload-data-per-user-over-hours}
-
-The upload data is the number of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet. As shown in the Figure \ref{fig:upload_data_per_user_hours_fig}, compare with the pattern in average download data, the lines in the upload data graph is more fluctuating, especially the pattern for the upload data on weekends.
-
-\textbf{TODO: need more analysis (not sure yet); updating the comparison graph}
-
 \section{Challenges}
 \label{sec:challenges}
 Because we was working with a big data set, in total \SI{300}{\giga\byte} of data, one of the main challenges that we faced was to find an application that would be able to process all this data. By talking to my supervisors, we decided to use a virtual machine on Google Cloud because we thought it would be enough to treat and process all the data sets. However, even using Google Cloud, the virtual machine run out of memory and it was necessary find different ways to storage the data, such as transitioning to BigQuery. Moreover, even though this is a professional data set gathered by FCC, there was still some invalided and noisy data and some lack of data description, e.g., outdated information about Whiteboxes. These implications related to the data set also led to some additional challenges to analyze it.
@@ -337,9 +277,12 @@ Because we was working with a big data set, in total \SI{300}{\giga\byte} of dat
 \section{Conclusion}
 \label{sec:conclusion}
 
-Based on the graphs and information presented, it is possible to conclude that the COVID-19 outbreak has impacted the consume of internet in the US. In terms of average consumption per user, from January 2020 to March 2020 (before and after COVID-19 hit the country) increased by 53\% for downloaded data and by 38\% for uploaded data. In addition to that, approximately 70\% of consumers experienced a decrease in their average download speed in March if compared to their average download speed in January, and approximately 80\% of users noticed a decrease in their average upload speed. These numbers show some of the impacts of COVID-19 in internet usage since this has been the most influential external factor to internet consumption in the US. Through these results that show that people indeed consumed more data in March, it can be inferred that people tended to comply to the stay at home orders and started doing most of their daily activities e.g., work and study, in a virtual environment.
+\input{wenjun_conclusion}
 
-\subsection{Future Work}
+
+Furthermore, based on the graphs and information presented, we found thatthe COVID-19 outbreak has impacted the consume of internet in the US. In terms of average consumption per user, from January 2020 to March 2020 (before and after COVID-19 hit the country) increased by 53\% for downloaded data and by 38\% for uploaded data. In addition to that, approximately 70\% of consumers experienced a decrease in their average download speed in March if compared to their average download speed in January, and approximately 80\% of users noticed a decrease in their average upload speed. These numbers show some of the impacts of COVID-19 in internet usage since this has been the most influential external factor to internet consumption in the US. Through these results that show that people indeed consumed more data in March, it can be inferred that people tended to comply to the stay at home orders and started doing most of their daily activities e.g., work and study, in a virtual environment.
+
+\section{Future Work}
 \label{sec:future-work}
 
 As this project is a working in progress, some of the next steps would be continuing analyzing the changes in internet consumption, e.g., how consumption changed in business hours and changes related to different geographic regions in the US, and also analyzing changes in latency.
