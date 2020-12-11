@@ -1,4 +1,0 @@
-\subsection{Population Demographics Analysis}
-We are provided with Federal Information Processing Standard (FIPS) codes for users in the study ($n=1692)$. These codes provide information regarding user's county of residence. We determine the population of these counties using open-source 2019 US Census Data. The specific census dataset provided populations for each county in the US and was processed with SQL. 
-
-We classify users as belonging to a 'Metro' area if their corresponding county population is greater than $1,000,000$ ($n=396$). Similarly, we classify users as belonging to a 'Rural' area if the county population is less than $100,000$ ($n=342$). To ensure that any trend we observe over time is not due to shifting demographics, we focus specifically on users who have participated in the study since January $2019$.
