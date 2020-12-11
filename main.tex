@@ -9,11 +9,20 @@
 \usepackage{array}
 \usepackage{url}
 \usepackage{hyperref}
-\usepackage[caption=false]{subfig}
+%\usepackage[caption=false]{subfig}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage[binary-units,per-mode=symbol]{siunitx}
 \usepackage{cite}
+
+\usepackage{lipsum}
+\usepackage{graphicx}
+
+\ifCLASSOPTIONcompsoc
+    \usepackage[caption=false, font=normalsize, labelfont=sf, textfont=sf]{subfig}
+\else
+\usepackage[caption=false, font=footnotesize]{subfig}
+\fi
 
 \def\UrlBreaks{\do\/\do-}
 
@@ -207,11 +216,15 @@ Besides analyzing the average amount of data downloaded and uploaded per consume
 \subsubsection{Average Download Speed}
 \label{sec:average-download-speed}
 
-In order to understand how the COVID-19 outbreak impacted the average download speed experienced by consumers, we calculated the ratio between the average download speed that users had access to in January and March 2020. The ratio was computed by the following formula:
+In order to understand how the COVID-19 outbreak impacted the average download speed experienced by consumers, we calculated the ratio between the average download speed that users had access to in January and March 2020. Define $S_{\text{download}}$ as the download speed, the ratio was computed by the following formula:
 
 \begin{equation}
-ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
+AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download}},\, \text{Mar}}-AVG_{S_{\text{download}},\, \text{Jan}}}{AVG_{S_{\text{download}},\, \text{Jan}}}\times 100
 \end{equation}
+
+% \begin{equation}
+% ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
+% \end{equation}
 
 Figure \ref{fig:downloadspeed2020} shows the results of the compilation of the ratios in a CDF format and, according to this graph, it is possible to infer that approximately 70\% of the users experienced a decrease in their average download speed from January to March. This is not the finalized version of the graph yet, since considering how noisy and big the data set is, it is indeed tough to process all the data and find the final version of the graphs. However, Figure \ref{fig:downloadspeed2020} already shows reliable results if we compare them to what other studies related to the topic have shown as they show that indeed the average download speed decreased during March 2020. It is also important to note that while approximately 80\% of the users experienced a decrease in their download speed, this decrease was a modest value of few percentages. In the article \textit{Internet Speed Analysis: Top 200 Cities, March 15th – 21st} \cite{cooper}, Cooper affirms that although some ISPs were able to hold up the increase in  internet consumption, some cities felt the impact of the increase in data consumption leading users to experience a decrease in their download speed, e.g., the download speed in New York City decreased by 24\% in March. This decrease in the average download speed in some cities is a result of the decrease of average download speed that consumers have experienced from January to March in 2020 and vice-versa.
 
@@ -224,10 +237,15 @@ Figure \ref{fig:downloadspeed2020} shows the results of the compilation of the r
 
 \subsubsection{Average Upload Speed}
 \label{sec:average-upload-speed}
-Similarly to the average download speed, we also computed the ratio between the average upload speed experienced by users in January and March 2020. The formula used was similar to the ratios for average download speed and can be represented by the following:
+Similarly to the average download speed, we also computed the ratio between the average upload speed experienced by users in January and March 2020. Define $S_{\text{upload}}$ as the upload speed, similar to the ratios for average download speed, the formula used can be represented as:
+
 \begin{equation}
-ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
+AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload}},\, \text{Mar}}-AVG_{S_{\text{upload}},\, \text{Jan}}}{AVG_{S_{\text{upload}},\, \text{Jan}}}\times 100
 \end{equation}
+
+% \begin{equation}
+% ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
+% \end{equation}
 
 Figure \ref{fig:uploadspeed2020} shows the compiled result of these ratios and, according to this graph, approximately 80\% of consumers (called unit-ids in the graph) saw their average upload speed decreasing from January to March 2020. As people transitioned most of their activities to a virtual environment, such as working and studying from home and had to log in calls and virtual conferences more often, it could be expected an increase in data upload (as Figure \ref{fig:upload2020} shows) and, consequently, a decrease in the average upload speed, since there were more data being uploaded than before. Again, similarly to the situation observed with the download speed, while 80\% of consumers experienced a decrease in their upload speed, this decrease was also modest of just a few percentages.
 
@@ -247,9 +265,14 @@ One component analyzed in this research was how the users who extensively used i
 \label{sec:heavy-download-users}
 
 In order to analyze the data usage of only heavy users, we computed the ratio of data downloaded between January and March for users who downloaded more than \SI{400}{\giga\byte} in January, in order words: we computed the ratios of data downloaded for approximately 10\% of the users who downloaded the most data in January. We applied the following formula to calculate the ratios:
+
 \begin{equation}
-ratio= data.downloaded.Mar/ data.downloaded.Jan
+Data_{downloaded}\% = \frac{Data_{downloaded,\, March}}{Data_{downloaded,\, January}}
 \end{equation}
+
+% \begin{equation}
+% ratio= data.downloaded.Mar/ data.downloaded.Jan
+% \end{equation}
 
 After computing the ratios for the 10\% of users who downloaded the most data in January, we computed the CDF shown in Figure \ref{fig:heavydown}.
 
