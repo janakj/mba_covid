@@ -126,28 +126,31 @@ Lutu et al. studied traffic patterns obtained from a UK-based mobile network ope
 
 % TODO: Add subsection about privacy and ethical considerations, discussing how our analyses fit into these.
 
-The Federal Communications Commission (FCC) runs a program called Measuring Broadband America (MBA) which collects data about broadband internet usage and performance in the United States \cite{mba}. The data is collected by a panel of volunteers with a hardware monitoring device installed on their fixed broadband internet connection. The device is known as the whitebox and is manufactured by SamKnows \cite{sam}. The panel consists of 4000 to 5000 volunteers, selected by the FCC to include all major ISPs, geographic regions, and broadband connection types. The whitebox uses a combination of passive and active measurement techniques to determine the state, parameters, and usage of the internet connection repeatedly throughout the day.
+The Federal Communications Commission (FCC) runs a program called Measuring Broadband America (MBA) which collects data about broadband internet usage and performance in the United States \cite{mba}. The data is collected by a panel of volunteers with a hardware monitoring device installed on their fixed broadband internet connection. The device is known as the whitebox and is manufactured by SamKnows \cite{sam}. The panel consists of 4000 to 5000 volunteers (depending on the year), selected by the FCC to include 16 major ISPs, geographic regions, and broadband connection types \cite{fcc-report-appendix}. The whitebox uses a combination of passive and active measurement techniques to determine the state, parameters, and usage of the internet connection repeatedly throughout the day.
 
 Since 2011, the FCC has been publishing annual reports on the overall performance of the US fixed broadband infrastructure \cite{mba-studies}. The reports are based on the data collected from a representative subset of the whiteboxes, cross-validated with information provided by broadband ISPs. The reports cover approximately 80\% of the US population.
 
 In addition, the FCC regularly publishes anonymized raw datasets on its website \cite{data}. All deployed whiteboxes generate approximately \SI{20}{\giga\byte} of data per month. In this study, we use the raw datasets to analyze the performance and changing usage patterns of US fixed broadband before and during COVID-19 related government-imposed restrictions (lockdowns). We work with the raw data collected from January 2019 to June 2020.
 
+The raw datasets are published in the form of comma-separate values (CSV) files broken down by the month and type of measurement. The following measurements are included: upload and download speed, the time to fetch a few selected well-known web pages, UDP/ICMP latency when idle and under load, video streaming performance, VoIP performance, DNS performance, and total bytes uploaded and downloaded by the user. In this project we only use the following raw data subset: upload and download speed, total user bytes, and latency.
+
+In addition to raw data sets, we also use the unit profile, unit census block, and excluded units datasets as published by the FCC. The unit profile dataset provides additional information about whiteboxes, including ISP name and service tier, technology, and coarse location. Not all whiteboxes are included in the unit profile dataset. The unit census block dataset identifies the census block for each whitebox. The excluded units dataset lists the whiteboxes that were excluded from the annual report. At the time of this study, the most recent unit profile, unit census block, and excluded unit datasets were from 2018, i.e., considerably older than the raw data.
+
 Analysis that involves population demographic information integrates 2019 U.S. Census data \cite{census}. We use the population dataset that provides county-level population information.
 
-%By analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's internet usage behavior has changed over the course of the pandemic.
+By analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's internet usage behavior has changed over the course of the pandemic.
 
-
-%For the analysis present in the other sections, we used mainly the raw MBA data which contains different types of information related to internet usage, such as values of data downloaded and uploaded, internet speed, latency and packet loss.
-
-% TODO: Talk about what data we use and how it is collected by whiteboxes
-
-\subsection{Ethical \& Privacy Considerations}
+\subsection{Ethical and Privacy Considerations}
 \label{sec:ethical-and-privacy-considerations}
 
-It is important to notice that this study aligns with the ethical expectations of academic research, since it does not disclose private information. All data used in our analysis is public and can be openly accessed on FCC's website.
+The FCC MBA panel consists of volunteers who were informed regarding the details of the program, explicitly opted into the program, and provided written consent to participate. All publicly released FCC MBA datasets have all personally identifiable information removed.
+
+All additional datasets used in this study, e.g., the U.S. Census Bureau data, is public information and can be obtained freely from the internet.
 
 \section{Methodology}
 \label{sec:methodology}
+
+% talk about how the data is cleaned (outliers, excluded units, unit profile)
 
 In order to analyze the impacts of COVID-19 on internet usage, it was necessary to process and analyze data from January 2019 to June 2020. The entire data set was approximately \SI{300}{\giga\byte}, requiring the use of big data workflows. We therefore used a virtual machine on Google Cloud to perform all processing and analysis.
 
