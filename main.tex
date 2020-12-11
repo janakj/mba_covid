@@ -9,7 +9,6 @@
 \usepackage{array}
 \usepackage{url}
 \usepackage{hyperref}
-%\usepackage[caption=false]{subfig}
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage[binary-units,per-mode=symbol]{siunitx}
@@ -19,9 +18,9 @@
 \usepackage{graphicx}
 
 \ifCLASSOPTIONcompsoc
-    \usepackage[caption=false, font=normalsize, labelfont=sf, textfont=sf]{subfig}
+  \usepackage[caption=false, font=normalsize, labelfont=sf, textfont=sf]{subfig}
 \else
-\usepackage[caption=false, font=footnotesize]{subfig}
+  \usepackage[caption=false, font=footnotesize]{subfig}
 \fi
 
 \def\UrlBreaks{\do\/\do-}
@@ -147,7 +146,7 @@ In addition to raw data sets, we also use the unit profile, unit census block, a
 
 Analysis that involves population demographic information integrates 2019 U.S. Census data \cite{census}. We use the population dataset that provides county-level population information.
 
-By analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's internet usage behavior has changed over the course of the pandemic.
+The size of all the datasets used the analysis presented in this paper was more than \SI{300}{\giga\byte}, requiring the use of big data workflows. By analyzing these data sets, we were aiming to understand not only how internet usage has changed, but also how people's internet usage behavior has changed over the course of the pandemic.
 
 \subsection{Ethical and Privacy Considerations}
 \label{sec:ethical-and-privacy-considerations}
@@ -159,11 +158,34 @@ All additional datasets used in this study, e.g., the U.S. Census Bureau data, i
 \section{Methodology}
 \label{sec:methodology}
 
+In order to analyze the impacts of COVID-19 lockdowns on fixed broadband internet usage, we need to analyze and compare data from time periods before and during lockdown. In the US, the states issued statewide lockdown orders on different dates. Table \ref{tab:state-lockdown} shows the date of the statewide lockdown order for selected states. The first state to issue a lockdown order was California on March 19. The last statewide lockdown order was issued by South Carolina on April 7. Seven states did not impose lockdown orders.
+
+\begin{table}
+  \centering
+  \caption{Lockdown dates for selected U.S. states}
+  \label{tab:state-lockdown}
+  \begin{tabular}{ |c|c| }
+    \hline
+    State         & Lockdown date \\
+    \hline
+    Arizona       & March 31 \\
+    California    & March 19 \\
+    Florida       & April 2  \\
+    Illinois      & March 21 \\
+    Massachusetts & March 24 \\
+    New Jersey    & March 21 \\
+    New York      & March 20 \\
+    Texas         & April 2  \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Thus, for the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period. We use the second half of March and April as lockdown period. To eliminate seasonal effects, we also use the data from January-April 2020 for comparison in some of the analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
+
+We uploaded the FCC MBA raw data from January 2019 to June 2020 into Google Cloud BigQuery \cite{bigquery}. We then analyzed the data using Google Cloud Datalab \cite{datalab} running on virtual machines (VMs) in Google Cloud. Google Cloud Datalab is a version of JupyterLab \cite{jupyter} with Google Cloud specific extensions (e.g., libraries to access the BigQuery database). All our scripts to process the data were written in Python 3. We kept everything synchronized and organized in a shared Git repository.
+
 % talk about how the data is cleaned (outliers, excluded units, unit profile)
 
-In order to analyze the impacts of COVID-19 on internet usage, it was necessary to process and analyze data from January 2019 to June 2020. The entire data set was approximately \SI{300}{\giga\byte}, requiring the use of big data workflows. We therefore used a virtual machine on Google Cloud to perform all processing and analysis.
-
-We specifically used Google Cloud's BigQuery for data storage of each monthly data set. Analysis was performed through Datalab, an environment that gives access to Jupyter Notebooks. Scripts were written in Python and workflows were documented using Git repositories.
 \input{amey_methods.tex}
 \input{wenjun_methods}
 
