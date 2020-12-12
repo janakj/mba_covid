@@ -327,26 +327,7 @@ After computing the ratios for the 10\% of users who downloaded the most data in
 
 The graph shows that approximately 40\% of the users increased their consumption of data downloaded. While this number is surprising, considering that before quarantine and stay-at-home orders took place these users were already using internet on its maximum capacity, a possible explanation to an increase in internet used for these users is that during quarantine, they spent even more time using video streaming service, e.g., Netflix and YouTube. According to Kovacs \cite{kovacs}, the world suffered from a more extensive internet traffic in March which was primarily caused by video streaming services. Kovacs also explained in her paper \textit{U.S. broadband networks rise to the challenge of surging traffic during the pandemic} that 24\% of internet traffic in the U.S. was caused by video services and that as a response, in March Netflix reduces its streaming speed and YouTube only allowed standard definition on its videos worldwide.
 
-\subsubsection{Heavy Upload Users}
-\label{sec:heavy-upload-users}
 
-We also computed the ratios of data uploaded between January and March for 10\% of the users who uploaded the most data in January. This analysis included approximately 500 users who uploaded more than \SI{47}{\giga\byte} in January. The formula used to calculate the ratios was similar to the one used for heavy download users and can be represented by:
-
-\begin{equation}
-\frac{Data_{\text{uploaded},\, \text{March}}}{Data_{\text{uploaded},\, \text{January}}}
-\end{equation}
-
-% ratio=upload bytes used in March / upload bytes used in January
-
-After computing the ratios for the 10\% of users who uploaded the most data in January, we generated the CDF shown in Figure 11. According to the graph, 60\% of users decreased or did not change their consumption for January to March. As this represents most of the heavy users, a possible explanation for this decrease/no change in uploaded data by their consumers could be that when COVID-19 hit the country back in early March, people had to relocate, many left the big cities of the country and college campuses to return to their homes in the suburbs. By migrating, these people could possibly relocate in an area in which they could have had a bad internet connection and or more options of outdoor activities, such as hiking. This led them to not use internet as intensively as they were using before.
-
-Moreover, another possible explanation for those who experienced no change in their download data consumption could be that as they were already consuming in their maximum capacity, when the stay at home orders took place, these people did not change their internet consumption that much, since they were already consuming as much as they could before quarantining. It is also interesting to see that 40\% of the heavy upload users increased their consumption of uploaded data. Although this was not expected, a possible explanation for this was the increase in video conferences that people participate starting in March 2020. By logging in Zoom meetings and other video conference services more frequently, their consumption of upload bytes increased significantly from January to March.
-\begin{figure}
-\centering
-\includegraphics[width=1.0\linewidth]{figs/heavyup.PNG}
-\caption{CDF that shows the ratios of average amount of data uploaded per consumer between January and March 2020 for consumers who uploaded more \SI{47}{\giga\byte} in January (top 10\% of consumers for data downloaded in January).}
-\label{fig:heavyup}
-\end{figure}
 
 \section{Challenges}
 \label{sec:challenges}
