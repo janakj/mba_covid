@@ -156,31 +156,34 @@ All additional datasets used in this study, e.g., the U.S. Census Bureau data, i
 \section{Methodology}
 \label{sec:methodology}
 
-In order to analyze the impacts of COVID-19 lockdowns on fixed broadband internet usage, we need to analyze and compare data from time periods before and during lockdown. In the US, the states issued statewide lockdown orders on different dates. Table \ref{tab:state-lockdown} shows the date of the statewide lockdown order for selected states. The first state to issue a lockdown order was California on March 19. The last statewide lockdown order was issued by South Carolina on April 7. Seven states did not impose lockdown orders.
+In order to analyze the impacts of COVID-19 lockdowns on fixed broadband internet usage, we need to analyze and compare data from time periods before and during lockdown. In the US, the states issued statewide lockdown orders on different dates. Table \ref{tab:state-lockdown} shows the date of the statewide lockdown order for each of the 50 US states. The first state to issue a lockdown order was California on March 19. The last statewide lockdown order was issued by South Carolina on April 7. The last seven states did not impose lockdown orders.
 
-\begin{table}
+\begin{table*}
   \centering
-  \caption{Lockdown dates for selected U.S. states}
+  \caption{All 50 US states ordered by lockdown dates (left-right, top-bottom)}
   \label{tab:state-lockdown}
-  \begin{tabular}{ |c|c| }
+  \begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
     \hline
-    State         & Lockdown date \\
+    CA   & NY   & IL   & NJ   & CT   & LA   & OH   & OR   & DE   & IN   & MA   & MI   & NM   & VT   & WA   & WV   & HI   & ID   & WI   \\
     \hline
-    Arizona       & March 31 \\
-    California    & March 19 \\
-    Florida       & April 2  \\
-    Illinois      & March 21 \\
-    Massachusetts & March 24 \\
-    New Jersey    & March 21 \\
-    New York      & March 20 \\
-    Texas         & April 2  \\
+    3/19 & 3/20 & 3/21 & 3/21 & 3/23 & 3/23 & 3/23 & 3/23 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/25 & 3/25 & 3/25 \\
+    \hline
+    CO   & KY   & MN   & NH   & AK   & MT   & RI   & KS   & MD   & NC   & VA   & AZ   & TN   & OK   & NV   & PA   & FL   & ME   & TX   \\
+    \hline
+    3/26 & 3/26 & 3/27 & 3/27 & 3/28 & 3/28 & 3/28 & 3/30 & 3/30 & 3/30 & 3/30 & 3/31 & 3/13 & 4/1  & 4/1  & 4/1  & 4/2  & 4/2  & 4/2  \\
+    \hline
+    GA   & MS   & AL   & MO   & SC   & AK   & IA   & NE   & ND   & SD   & UT   & WY   & \multicolumn{7}{|c|}{}                         \\
+    \hline
+    4/3  & 4/3  & 4/4  & 4/6  & 4/7  & ---  & ---  & ---  & ---  & ---  & ---  & ---  & \multicolumn{7}{|c|}{}                         \\
     \hline
   \end{tabular}
-\end{table}
+\end{table*}
 
 Thus, for the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period. We use the second half of March and April as lockdown period. To eliminate seasonal effects, we also use the data from January-April 2020 for comparison in some of the analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
 
 We uploaded the FCC MBA raw data from January 2019 to June 2020 into Google Cloud BigQuery \cite{bigquery}. We then analyzed the data using Google Cloud Datalab \cite{datalab} running on virtual machines (VMs) in Google Cloud. Google Cloud Datalab is a version of JupyterLab \cite{jupyter} with Google Cloud specific extensions (e.g., libraries to access the BigQuery database). All our scripts to process the data were written in Python 3. We kept everything synchronized and organized in a shared Git repository.
+
+
 
 % TODO: talk about how the data is cleaned (outliers, excluded units, unit profile)
 
