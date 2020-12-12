@@ -215,7 +215,7 @@ where ``persistent users" means the users who are present throughout the course 
 
 \input{wenjun}
 
-\subsection{The Data Consumption}
+\subsection{The Data Usage}
 \label{sec:the-data-consumption}
 In this sub-section, we present the results that show how COVID-19 changed the amount of average data downloaded and uploaded per user.
 
@@ -301,36 +301,6 @@ Figure \ref{fig:uploadspeed2020} shows the compiled result of these ratios and, 
 \label{fig:uploadspeed2020}
 \end{figure}
 
-\subsection{Consumers with the heaviest internet consumption}
-\label{sec:analyzing-the-users-with-the-highest-internet-usage}
-
-One component analyzed in this research was how the users who extensively used internet before the pandemic, have been using it after the COVID-19 outbreak. This analyzes hopes to gain more behavioral insights about people's internet consumption. Thus, we identified the 10\% of users (approximately 500 users) who had the highest averages of data downloaded and uploaded in January 2020 and computed the ratio of average usage between January and March in order to find out if their usage increased or decreased after COVID-19 hit the country in early March.
-
-\subsubsection{Heavy Download Users}
-\label{sec:heavy-download-users}
-
-In order to analyze the data usage of only heavy users, we computed the ratio of data downloaded between January and March for users who downloaded more than \SI{400}{\giga\byte} in January, in order words: we computed the ratios of data downloaded for approximately 10\% of the users who downloaded the most data in January. We applied the following formula to calculate the ratios:
-
-\begin{equation}
-\frac{Data_{\text{downloaded},\, \text{March}}}{Data_{\text{downloaded},\, \text{January}}}
-\end{equation}
-
-% \begin{equation}
-% ratio= data.downloaded.Mar/ data.downloaded.Jan
-% \end{equation}
-
-After computing the ratios for the 10\% of users who downloaded the most data in January, we computed the CDF shown in Figure \ref{fig:heavydown}.
-
-\begin{figure}
-\centering
-\includegraphics[width=1.0\linewidth]{figs/heavydown.PNG}
-\caption{CDF that shows the ratios of average amount of data downloaded per consumer between January and March 2020 for consumers who downloaded more \SI{400}{\giga\byte} in January (top 10\% of consumers for data downloaded in January).}
-\label{fig:heavydown}
-\end{figure}
-
-The graph shows that approximately 40\% of the users increased their consumption of data downloaded. While this number is surprising, considering that before quarantine and stay-at-home orders took place these users were already using internet on its maximum capacity, a possible explanation to an increase in internet used for these users is that during quarantine, they spent even more time using video streaming service, e.g., Netflix and YouTube. According to Kovacs \cite{kovacs}, the world suffered from a more extensive internet traffic in March which was primarily caused by video streaming services. Kovacs also explained in her paper \textit{U.S. broadband networks rise to the challenge of surging traffic during the pandemic} that 24\% of internet traffic in the U.S. was caused by video services and that as a response, in March Netflix reduces its streaming speed and YouTube only allowed standard definition on its videos worldwide.
-
-
 
 \section{Challenges}
 \label{sec:challenges}
@@ -347,7 +317,7 @@ Furthermore, based on the graphs and information presented, we found that the CO
 \section{Future Work}
 \label{sec:future-work}
 
-As this project is a working in progress, some of the next steps would be continuing analyzing the changes in internet consumption, e.g., how consumption changed in business hours and changes related to different geographic regions in the US, and also analyzing changes in latency.
+This project is a working in progress. some of the next steps would be continuing analyzing the changes in internet consumption, e.g., how consumption changed in business hours and changes related to different geographic regions in the US, and also analyzing changes in latency.
 
 \section{Acknowledgements}
 \label{sec:acknowledgements}
