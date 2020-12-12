@@ -15,7 +15,6 @@
 \usepackage{cite}
 
 \usepackage{lipsum}
-\usepackage{graphicx}
 
 \ifCLASSOPTIONcompsoc
   \usepackage[caption=false, font=normalsize, labelfont=sf, textfont=sf]{subfig}
@@ -47,7 +46,7 @@
         \href{mailto:jdm2240@barnard.edu}{\color{black}Jessica De Oliveira Moreira}\IEEEauthorrefmark{1},
         \href{mailto:amey.pasarkar@columbia.edu}{\color{black}Amey Praveen Pasarkar}\IEEEauthorrefmark{2},
         \href{mailto:wc2741@columbia.edu}{\color{black}Wenjun Chen}\IEEEauthorrefmark{2},
-        \href{mailto:wh2453@columbia.edu}{\color{black}Kerry Hu}\IEEEauthorrefmark{2},
+        \href{mailto:wh2453@columbia.edu}{\color{black}Wenkai Hu}\IEEEauthorrefmark{2},\\
         \href{mailto:janakj@cs.columbia.edu}{\color{black}Jan Janak}\IEEEauthorrefmark{3},
         \href{mailto:hgs@cs.columbia.edu}{\color{black}Henning Schulzrinne}\IEEEauthorrefmark{3}
     }
@@ -76,7 +75,7 @@
 \maketitle
 
 \begin{abstract}
-The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, most activities that people were used to changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the United States were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 has impacted internet usage in the  United States. While analyzing the fixed broadband raw datasets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
+The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, most activities that people were used to changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the United States were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 has impacted fixed broadband internet usage in the  United States. While analyzing the fixed broadband raw datasets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
 \end{abstract}
 
 \section{Introduction}
@@ -115,7 +114,7 @@ B\"{o}ttger et al. studied similar effects using data from Facebook's global edg
 
 Liu et al. found a 30-60\% increase in peak traffic volumes in the US, a statistically significant increase of 10\% in average latency over two months, and ISPs adding interconnect capacity at more than twice the usual rate \cite{liu2020characterizing}.
 
-Several broadband market reports analyzed the state of broadband infrastructure during the pandemic. OpenVault saw a 40\% broadband traffic increase in 3Q 2020 over 2019, but less than 1\% over 2Q 2020 \cite{openvault}. Traffic growth plateaued in 2020, indicating a new normal for broadband bandwidth usage. Temporarily relaxed data usage quota resulted in faster growth of usage-based accounts compared to flat rate accounts. Ofcom reports that UK broadband service providers were generally able to keep up with the demand in March, with only a 1-2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}. SamKnows published a series of articles about the state of critical infrastructure \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. Their observations in UK and the US showed only slightly worse average download speeds and round trip times during lockdown.
+Several broadband market reports analyzed the state of broadband infrastructure during the pandemic. OpenVault saw a 40\% broadband traffic increase in Q3 2020 over 2019, but less than 1\% over Q2 2020 \cite{openvault}. Traffic growth plateaued in 2020, indicating a new normal for broadband bandwidth usage. Temporarily relaxed data usage quota resulted in faster growth of usage-based accounts compared to flat rate accounts. Ofcom reported that UK broadband service providers were generally able to keep up with the demand in March, with only a 1-2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}. SamKnows published a series of articles about the state of critical infrastructure \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. Their observations in UK and the US showed only slightly worse average download speeds and round trip times during lockdown.
 
 Several network service providers discussed lockdown-related trends and observations on their blogs: Google \cite{google}, Akamai \cite{akamai}, Facebook \cite{facebook}, Comcast \cite{comcast}. In all cases, initial traffic surges aligned with mandatory isolation protocols have been reported, as well as long-term shifts in diurnal and weekly traffic patterns. The general sentiment appears to be that existing infrastructure was either able to keep up with the traffic due to over-provisioning, or could be rapidly adapted to meet the increased demand. It is worth mentioning that network service providers generally report higher traffic surges than broadband monitoring companies like SamKnows or OpenVault.
 
@@ -158,9 +157,9 @@ All additional datasets used in this study, e.g., the U.S. Census Bureau data, i
 
 In order to analyze the impacts of COVID-19 lockdowns on fixed broadband internet usage, we need to compare data from time periods before and during lockdown. In the US, the states issued statewide lockdown orders on different dates. Table \ref{tab:state-lockdown} shows the date of the statewide lockdown order being enforced for each of the 50 US states. The first state to issue a lockdown order was California on March 19. The last statewide lockdown order was issued by South Carolina on April 7. The last seven states did not impose lockdown orders.
 
-\begin{table*}
+\begin{table*}[ht]
   \centering
-  \caption{All 50 US states in an increasing order of lockdown dates (left-right, top-bottom)}
+  \caption{Lockdown dates of all 50 US states in an increasing order (left-right, top-bottom)}
   \label{tab:state-lockdown}
   \begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
     \hline
@@ -179,7 +178,7 @@ In order to analyze the impacts of COVID-19 lockdowns on fixed broadband interne
   \end{tabular}
 \end{table*}
 
-For the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period, while use the second half of March and April as lockdown period. To eliminate seasonal effects, we also use the data from January-April 2020 for comparison in some analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
+For the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period, while use the second half of March and April as lockdown period. To eliminate seasonal effects, we also use the data from January-April 2019 for comparison in some analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
 
 We uploaded the FCC MBA raw data from January 2019 to June 2020 into Google Cloud BigQuery \cite{bigquery}. We then analyzed the data using Google Cloud Datalab \cite{datalab} running on virtual machines (VMs) in Google Cloud. Google Cloud Datalab is a version of JupyterLab \cite{jupyter} with Google Cloud specific extensions (e.g., libraries to access the BigQuery database). All our scripts to process the data were written in Python 3. We kept everything synchronized and organized in a shared Git repository.
 
@@ -193,13 +192,13 @@ The MBA dataset contains Federal Information Processing Standard (FIPS) codes fo
 
 We classify users as belonging to a 'Metro' area if their corresponding county population is greater than $1,000,000$ ($n=396$). Similarly, we classify users as belonging to a 'Rural' area if the county population is less than $100,000$ ($n=342$). To ensure that any trend we observe over time is not due to shifting demographics, we focus specifically on users who have participated in the study since January $2019$.
 
-\subsection{Hourly Usage Patterns}
+\subsection{Hourly Data Usage Patterns}
 
 In this part, we compare the average uploaded and downloaded data per user over hour on each month before and after COVID-19. The downloaded data are the number of bytes that the customer received from the internet to wired LAN devices and the Wi-Fi devices, and the uploaded data are the number of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet.
 
-Since the recorded time in dataset is finished in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by $24$. (2) For month, if the value of hour in local time is negative and the day is $1$, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values.
+Since timestamps in the datasets are in coordinated universal time, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by $24$. (2) For month, if the value of hour in local time is negative and the day is $1$, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year. For the users, we focus on users who are present throughout the course of the study. We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values.
 
-For each month, the average number of downloaded data and that of uploaded data are defined as
+For each month, the average number of downloaded data and uploaded data are defined as
 
 \begin{equation}
     AVG_{\text{download}} =\frac{SUM(\text{download data})}{COUNT(\text{persistent users})}
@@ -208,6 +207,7 @@ For each month, the average number of downloaded data and that of uploaded data 
     AVG_{\text{upload}} =\frac{SUM(\text{upload data})}{COUNT(\text{persistent users})}
 \end{equation}
 where ``persistent users" means the users who are present throughout the course of the study.
+
 
 \section{Data Analysis}
 \label{sec:data-analysis}
@@ -219,7 +219,7 @@ where ``persistent users" means the users who are present throughout the course 
 \label{sec:the-data-consumption}
 In this sub-section, we present the results that show how COVID-19 changed the amount of average data downloaded and uploaded per user.
 
-\subsubsection{Data Downloaded}
+\subsubsection{Downloaded Data}
 \label{sec:download-data-consumption}
 
 In order to analyze the impact of COVID-19 on the amount of data downloaded, we calculated the average value of data downloaded per user each month in the timeline of January-March 2020. After the averages were computed, Figure \ref{fig:download2020} was generated and it shows how it has changed from January to March.
@@ -264,7 +264,7 @@ Besides analyzing the average amount of data downloaded and uploaded per consume
 In order to understand how the COVID-19 outbreak impacted the average download speed experienced by consumers, we calculated the ratio between the average download speed that users experienced between January and March 2020. Defining $S_{\text{download}}$ as the download speed, the ratio was computed by the following formula:
 
 \begin{equation}
-AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download}},\, \text{Mar}}-AVG_{S_{\text{download}},\, \text{Jan}}}{AVG_{S_{\text{download}},\, \text{Jan}}}\times 100
+AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download},\, \text{Mar}}}-AVG_{S_{\text{download},\, \text{Jan}}}}{AVG_{S_{\text{download},\, \text{Jan}}}}\times 100
 \end{equation}
 
 % \begin{equation}
@@ -285,7 +285,7 @@ Figure \ref{fig:downloadspeed2020} shows the results of the compilation of the r
 Similarly to the average download speed, we also computed the ratio between the average upload speed experienced by users between January and March 2020. Defining $S_{\text{upload}}$ as the upload speed, similar to the ratios for average download speed, the formula used can be represented as:
 
 \begin{equation}
-AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload}},\, \text{Mar}}-AVG_{S_{\text{upload}},\, \text{Jan}}}{AVG_{S_{\text{upload}},\, \text{Jan}}}\times 100
+AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload}},\, \text{Mar}}-AVG_{S_{\text{upload},\, \text{Jan}}}}{AVG_{S_{\text{upload},\, \text{Jan}}}}\times 100
 \end{equation}
 
 % \begin{equation}
@@ -303,6 +303,8 @@ Figure \ref{fig:uploadspeed2020} shows the compiled result of these ratios and, 
 
 
 \subsection{Packet Loss Analysis}
+\input{kerry.tex}
+
 
 \section{Challenges}
 \label{sec:challenges}
@@ -323,7 +325,7 @@ This project is a working in progress. some of the next steps would be continuin
 \section{Acknowledgements}
 \label{sec:acknowledgements}
 
-Jessica Moreira was funded by Craig Newmark Philanthropies while working on the project. She would also like to thank to the DIMACS REU Summer 2020 Research program and the Barnard Computer Science department for additional support.
+Jessica De Oliveira Moreira was funded by Craig Newmark Philanthropies while working on the project. She would also like to thank to the DIMACS REU Summer 2020 Research program and the Barnard Computer Science department for additional support.
 
 \bibliographystyle{IEEEtran}
 \bibliography{bibs/references}
