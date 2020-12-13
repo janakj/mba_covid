@@ -1,4 +1,5 @@
 \documentclass[conference,10pt]{IEEEtran}
+\IEEEoverridecommandlockouts   % enable \thanks
 \usepackage{flushend}
 \usepackage{lastpage}
 \usepackage[utf8]{inputenc}
@@ -70,6 +71,7 @@
       \href{mailto:janakj@cs.columbia.edu}{\color{black}janakj},%
       \href{mailto:hgs@cs.columbia.edu}{\color{black}hgs}%
     \}@cs.columbia.edu
+    \thanks{Jessica De Oliveira Moreira, Amey Praveen Pasarkar, Wenjun Chen, and Wenkai Hu contributed equally to this research. The work of Jessica De Oliveira Moreira was supported by Craig Newmark Philanthropies. Corresponding authors: Jan Janak; Henning Schulzrinne.}
 }
 
 \maketitle
@@ -78,6 +80,9 @@
 The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, many ordinary activities were changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the United States were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 has impacted fixed broadband internet usage in the  United States. While analyzing the fixed broadband raw datasets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
 \end{abstract}
 
+\begin{IEEEkeywords}
+\end{IEEEkeywords}
+
 \section{Introduction}
 \label{sec:introduction}
 
@@ -85,7 +90,7 @@ Much has been written about whether the residential internet infrastructure in t
 
 We attempt to address both questions in this paper. First, we describe some of the sampling bias limitations of classical user-initiated network speed measurements in estimating how well infrastructure holds up during shifts in usage. For example, seeming reductions in speed may be caused by increased Wi-Fi interference or simply by increased usage by people who have lower internet speeds, whether by deliberate choice, availability or affordability.
 
-We then draw on the FCC Measuring Broadband America (MBA) raw data, available longitudinally since 2011, to estimate the impact of increased internet usage on a variety of performance metrics, including throughput, latency and packet loss, disaggregating by coarse-grained geography and technology. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been shown to increase upstream bandwidth usage by 10-40\%.
+We then draw on the FCC Measuring Broadband America (MBA) raw data, available longitudinally since 2011, to estimate the impact of increased internet usage on a variety of performance metrics, including throughput, latency and packet loss, disaggregating by coarse-grained geography and technology. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been shown to increase upstream bandwidth usage by 10--40\%.
 
 At least as important as measuring the impact of COVID-19 on internet performance is using indirect metrics, such as internet usage, to estimate the success of social distancing measures, while maintaining user privacy. We draw on two metrics to explore whether we can detect the daytime and evening usage of residential internet users, indicating home schooling and working from home, as well as observance of stay-at-home orders on weekends. MBA suspends throughput measurements during periods of significant usage, such as video conferencing, and also tabulates total use. Thus, we might be able to deduce when households are actively using their broadband connection and whether such usage reflects, for example, the earlier restrictions imposed in Washington State or in the New York metro area.
 
@@ -110,25 +115,47 @@ In the following sections of the paper, we present related work about the impact
 
 A small number of studies focusing on the effects of lockdowns on internet infrastructure have already been published as of November 2020. These studies typically look at traffic trends and patterns from various vantage points. Some look for signs of stress in internet infrastructure, while others attempt to correlate traffic data with user behavior during lockdowns.
 
-Feldmann et al. studied the effects of lockdowns on internet traffic using traffic data obtained from several Internet Service Providers (ISPs) and Internet Exchange Points (IXPs) in Europe and the US East Coast\cite{feldmann2020lockdown}. The authors found that residential traffic increased by 15-20\% after the lockdown and that remote work and education applications saw a 200\% increase in traffic. The regular weekday traffic pattern morphed into a weekend-like pattern with a significant traffic increase starting in the morning, from mid-March until roughly mid-May.
+Feldmann et al. studied the effects of lockdowns on internet traffic using traffic data obtained from several Internet Service Providers (ISPs) and Internet Exchange Points (IXPs) in Europe and the US East Coast\cite{feldmann2020lockdown}. The authors found that residential traffic increased by 15--20\% after the lockdown and that remote work and education applications saw a 200\% increase in traffic. The regular weekday traffic pattern morphed into a weekend-like pattern with a significant traffic increase starting in the morning, from mid-March until roughly mid-May.
 
 B\"{o}ttger et al. studied similar effects using data from Facebook's global edge network \cite{bottger2020internet}. They observed a traffic increase in the second half of March and found regional correlations between traffic growth and the spread of COVID-19 in the region. The data from Facebook's video services showed a degradation in the quality of user experience in India and South Africa. Authors attributed the degradation to limited capacity and last-mile network congestion in those countries.
 
-Liu et al. found a 30-60\% increase in peak traffic volumes in the US, a statistically significant increase of 10\% in average latency over two months, and ISPs adding interconnect capacity at more than twice the usual rate \cite{liu2020characterizing}.
+Liu et al. found a 30--60\% increase in peak traffic volumes in the US, a statistically significant increase of 10\% in average latency over two months, and ISPs adding interconnect capacity at more than twice the usual rate \cite{liu2020characterizing}.
 
-Several broadband market reports analyzed the state of broadband infrastructure during the pandemic. OpenVault saw a 40\% broadband traffic increase in Q3 2020 over 2019, but less than 1\% over Q2 2020 \cite{openvault}. Traffic growth plateaued in 2020, indicating a new normal for broadband bandwidth usage. Temporarily relaxed data usage quota resulted in faster growth of usage-based accounts compared to flat rate accounts. Ofcom reported that UK broadband service providers were generally able to keep up with the demand in March, with only a 1-2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}. SamKnows published a series of articles about the state of critical infrastructure \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. Their observations in UK and the US showed only slightly worse average download speeds and round trip times during lockdown.
+Several broadband market reports analyzed the state of broadband infrastructure during the pandemic. OpenVault saw a 40\% broadband traffic increase in Q3 2020 over 2019, but less than 1\% over Q2 2020 \cite{openvault}. Traffic growth plateaued in 2020, indicating a new normal for broadband bandwidth usage. Temporarily relaxed data usage quota resulted in faster growth of usage-based accounts compared to flat rate accounts. Ofcom reported that UK broadband service providers were generally able to keep up with the demand in March, with only a 1--2\% decrease in download and upload speeds and 2\% increase in latency \cite{uk-home-broadband-performance}. SamKnows published a series of articles about the state of critical infrastructure \cite{samknows-cdn,samknows-video-streaming,samknows-video-conferencing,samknows-usa}. Their observations in UK and the US showed only slightly worse average download speeds and round trip times during lockdown.
 
-Several network service providers discussed lockdown-related trends and observations on their blogs: Google \cite{google}, Akamai \cite{akamai}, Facebook \cite{facebook}, Comcast \cite{comcast}. In all cases, initial traffic surges aligned with mandatory isolation protocols have been reported, as well as long-term shifts in diurnal and weekly traffic patterns. The general sentiment appears to be that existing infrastructure was either able to keep up with the traffic due to over-provisioning, or could be rapidly adapted to meet the increased demand. It is worth mentioning that network service providers generally report higher traffic surges than broadband monitoring companies like SamKnows or OpenVault.
+Several network service providers discussed lockdown-related trends and observations on their blogs: Google \cite{google}, Akamai \cite{akamai}, Facebook \cite{facebook}, Comcast \cite{comcast}. In all cases, initial traffic surges aligned with mandatory isolation protocols have been reported, as well as long-term shifts in daily and weekly traffic patterns. The general sentiment appears to be that existing infrastructure was either able to keep up with the traffic due to over-provisioning, or could be rapidly adapted to meet the increased demand. It is worth mentioning that network service providers generally report higher traffic surges than broadband monitoring companies like SamKnows or OpenVault.
 
 NCTA reported a usage growth of 30\% (downstream) and 50\% (upstream) since March among its member broadband cable providers \cite{ncta}. Sandvine saw a traffic growth of 40\% between February and April. The growth was driven by video, gaming, and social sharing applications which comprise 80\% of all traffic \cite{sandvine}.
 
-Kovacs compared the performance of fixed broadband internet during the pandemic in the US and in Europe \cite{kovacs}. Using data collected by the company Ookla, the author found that US fixed broadband networks generally performed better than their comparable European peers, offering 30-35\% higher mean download speed. Kovacs attributed the difference to bigger long term investments in telecommunications infrastructure, more favorable mix of technologies, and lighter-touch regulatory approach in the US.
+Kovacs compared the performance of fixed broadband internet during the pandemic in the US and in Europe \cite{kovacs}. Using data collected by the company Ookla, the author found that US fixed broadband networks generally performed better than their comparable European peers, offering 30--35\% higher mean download speed. Kovacs attributed the difference to bigger long term investments in telecommunications infrastructure, more favorable mix of technologies, and lighter-touch regulatory approach in the US.
 
 % Another article \textit{Stealth CEO: Asymmetric broadband speeds cause strain during work from home efforts} \cite{robuck} points out that people who are currently working from home have faced some challenges to open all their work applications and have been using more cloud services. According to Robuck, internet traffic caused by these cloud services increased 32\% since staying-home orders started in the country. Moreover, it has been confirmed that people have experienced an asymmetrical connection which has directly slowed the upstream speed.
 
 % Moreover, according to Frankel \cite{frankel}, the average down streams in urban spaces in March 16th was \SI{5.1}{\giga\byte} - more than double of the down streams value registered nine weeks before. In addition to that, Frankel affirms that according to Nilsen, video streaming consumption increased 61\% in the US since early March.
 
 Lutu et al. studied traffic patterns obtained from a UK-based mobile network operator (MNO) and analyzed the effect of mandatory stay-at-home orders on users' mobility behavior \cite{lutu2020mobile}. They found an overall decrease in users' mobility following the government’s mandatory stay-at-home orders. The authors found a decrease in cellular data traffic volumes and an overall increase in voice traffic.
+
+\begin{table*}
+  \centering
+  \caption{Lockdown dates of all 50 US states in an increasing order (left-right, top-bottom)}
+  \label{tab:state-lockdown}
+  \begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
+    \hline
+    CA   & NY   & IL   & NJ   & CT   & LA   & OH   & OR   & DE   & IN   & MA   & MI   & NM   & VT   & WA   & WV   & HI   & ID   & WI   \\
+    \hline
+    3/19 & 3/20 & 3/21 & 3/21 & 3/23 & 3/23 & 3/23 & 3/23 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/25 & 3/25 & 3/25 \\
+    \hline\hline
+    CO   & KY   & MN   & NH   & AK   & MT   & RI   & KS   & MD   & NC   & VA   & AZ   & TN   & OK   & NV   & PA   & FL   & ME   & TX   \\
+    \hline
+    3/26 & 3/26 & 3/27 & 3/27 & 3/28 & 3/28 & 3/28 & 3/30 & 3/30 & 3/30 & 3/30 & 3/31 & 3/13 & 4/1  & 4/1  & 4/1  & 4/2  & 4/2  & 4/2  \\
+    \hline\hline
+    GA   & MS   & AL   & MO   & SC   & AK   & IA   & NE   & ND   & SD   & UT   & WY   & \multicolumn{7}{|c|}{}                         \\
+    \hline
+    4/3  & 4/3  & 4/4  & 4/6  & 4/7  & ---  & ---  & ---  & ---  & ---  & ---  & ---  & \multicolumn{7}{|c|}{}                         \\
+    \hline
+  \end{tabular}
+\end{table*}
+
 
 \section{Datasets}
 \label{sec:datasets}
@@ -137,7 +164,7 @@ The Federal Communications Commission (FCC) runs a program called Measuring Broa
 
 Since 2011, the FCC has been publishing annual reports on the overall performance of the US fixed broadband infrastructure \cite{mba-studies}. The reports are based on the data collected from a representative subset of the test units, cross-validated with information provided by fixed broadband ISPs. The reports cover approximately 80\% of the US population.
 
-In addition, the FCC regularly publishes anonymized raw datasets on its website \cite{data}. All deployed test units generate approximately \SI{20}{\giga\byte} of data per month. In this study, we use the raw datasets to analyze the performance and changing usage patterns of US fixed broadband before and during COVID-19 related government-imposed restrictions (lockdowns). We work with the raw data collected from January 2019 to June 2020.
+In addition, the FCC regularly publishes anonymized raw datasets on its website \cite{data}. All deployed test units generate approximately \SI{20}{\giga\byte} of data per month. In this study, we use the raw datasets to analyze the performance and changing usage patterns of US fixed broadband before and during COVID-19 related government-imposed restrictions (lockdowns). We work with the raw data collected from January 2019 to June 2020. At the time of writing, the latest dataset published by the FCC was from June 2020.
 
 The raw datasets are published in the form of comma-separate values (CSV) files broken down by the month and type of measurement. The following measurements are included: upload and download speed, the time to fetch a few selected well-known web pages, UDP/ICMP latency when idle and under load, video streaming performance, VoIP performance, DNS performance, and total bytes uploaded and downloaded by the user. In this project we only use the following raw data subset: upload and download speed, total user bytes, and packet loss.
 
@@ -159,46 +186,22 @@ All additional datasets used in this study, e.g., the U.S. Census Bureau data, i
 \section{Methodology}
 \label{sec:methodology}
 
-\begin{table*}[ht]
-  \centering
-  \caption{Lockdown dates of all 50 US states in an increasing order (left-right, top-bottom)}
-  \label{tab:state-lockdown}
-  \begin{tabular}{ |c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c| }
-    \hline
-    CA   & NY   & IL   & NJ   & CT   & LA   & OH   & OR   & DE   & IN   & MA   & MI   & NM   & VT   & WA   & WV   & HI   & ID   & WI   \\
-    \hline
-    3/19 & 3/20 & 3/21 & 3/21 & 3/23 & 3/23 & 3/23 & 3/23 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/24 & 3/25 & 3/25 & 3/25 \\
-    \hline\hline
-    CO   & KY   & MN   & NH   & AK   & MT   & RI   & KS   & MD   & NC   & VA   & AZ   & TN   & OK   & NV   & PA   & FL   & ME   & TX   \\
-    \hline
-    3/26 & 3/26 & 3/27 & 3/27 & 3/28 & 3/28 & 3/28 & 3/30 & 3/30 & 3/30 & 3/30 & 3/31 & 3/13 & 4/1  & 4/1  & 4/1  & 4/2  & 4/2  & 4/2  \\
-    \hline\hline
-    GA   & MS   & AL   & MO   & SC   & AK   & IA   & NE   & ND   & SD   & UT   & WY   & \multicolumn{7}{|c|}{}                         \\
-    \hline
-    4/3  & 4/3  & 4/4  & 4/6  & 4/7  & ---  & ---  & ---  & ---  & ---  & ---  & ---  & \multicolumn{7}{|c|}{}                         \\
-    \hline
-  \end{tabular}
-\end{table*}
-
 In order to analyze the impacts of COVID-19 lockdowns on fixed broadband internet usage, we need to compare data from time periods before and during lockdown. In the US, individual states issued statewide lockdown orders on different dates. Table \ref{tab:state-lockdown} shows the first date of the statewide lockdown order being enforced for each of the 50 US states. The first state to issue a lockdown order was California on March 19. The last statewide lockdown order was issued by South Carolina on April 7. The seven states at the end of the table did not impose lockdown orders.
 
-For the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period and the second half of March until the end of May as the lockdown period. To eliminate seasonal effects, we also use the data from January to June 2019 for comparison in some analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
+For the purpose of the analysis presented in this paper, we use January and February 2020 as the pre-lockdown period and mid-March to mid-May as the lockdown period. We consider the period from mid-May until end of June as post-lockdown, i.e., a period where many of the restrictions were being relaxed. To eliminate seasonal effects, we also use the data from January to June 2019 for comparison in some analysis. Thus, most of our algorithms run on the data from January 2019 to June 2020 (the last dataset published by the FCC as of September 2020).
 
 We uploaded the FCC MBA raw data from January 2019 to June 2020, the 2019 census data, and all the auxiliary datasets (unit profile, unit census, excluded units) into a Google Cloud BigQuery database \cite{bigquery}. BigQuery allowed us to query the data using a familiar SQL-based interface.
 
 We then analyzed the data using Google Cloud Datalab \cite{datalab} running on virtual machines (VMs) in Google Cloud. Google Cloud Datalab is a version of JupyterLab \cite{jupyter} with Google Cloud specific extensions (e.g., libraries to access the BigQuery database). All our programs to analyze the data were written in Python 3. We kept everything synchronized and organized in a shared Git repository.
+
+To calculate the total downloaded data per user, we sum the number of bytes received from the internet on all wired LAN and Wi-Fi networks. Similarly, to calculate the total uploaded data per user, we sum the number of bytes transmitted to the internet from all wired LAN and Wi-Fi networks. In both cases, any data received or transmitted by the test unit itself during active measurements is excluded.
+
 
 \subsection{Data Cleaning}
 
 The raw dataset includes measurements from all test units that reported at least once within the analyzed time period. We found several test units reporting invalid data, e.g., unrealistic amounts of user traffic. We assumed those test units were malfunctioning and manually removed all their data from the database.
 
 In some of the experiments where a larger number of test units was not necessary, we filtered the raw datasets and included only test units that were not found in the excluded units datasets and that were found in the unit profile dataset. This step gives a smaller test unit subset that roughly includes the test units used in the most recent FCC annual report.
-
-%All measurement timestamps in the FCC MBA raw datasets use the Coordinated Universal Time (UTC). The unit profile dataset provide a timezone offset for each test unit that can be used to convert the UTC timestamp to the test unit's local time. This step reduces the number of test units available for daily analyses to approximately 3000. We performed this step in all analyses of usage or performance patterns over the course of the day.
-
-%This spreadsheet identifies the census block in which each unit running test is located. Census block is from 2000 census and is in the FIPS code format. We have used block FIPS codes for blocks that contains more than 1,000 people. For blocks with less than 1,000 people we have aggregated to the next highest level, i.e. tract and used the Tract FIPS code, provided there are more than 1,000 people in the tract. In cases where there are less than 1,000 people in a tract we have aggregated to County level. This level of anonymization is done for privacy purposes so as not to expose PII
-
-% TODO: talk about how the data is cleaned (outliers, excluded units, unit profile)
 
 \subsection{Population Demographics Preprocessing}
 
@@ -210,32 +213,26 @@ Census block groups are designed to contain a specific number of people and ther
 
 FIPS census identifiers have a hierarchical structure where the first two digits refer to the state, while the subsequent three refer to the county within the state. Thus, to map test units to populations, we extract the county from each test unit's FIPS census identifier and map it to a population using the publicly-available 2019 US Census Bureau dataset \cite{census}. In this step, we must exclude approximately 180 test units that have a state-level census identifier only (counties with fewer than 1000 people).
 
-Among the test units for which we were able to obtain county population, we focus specifically on those that have participated in the study since January $2019$ ($n=1692)$, i.e., we exclude test units that have joined the FCC MBA program later. This helps ensure that any trend we observe over time is not due to shifting demographics.
+Among the test units for which we were able to obtain county population, we focus specifically on those that have participated in the study since January 2019 ($n=1692$), i.e., we exclude test units that have joined the FCC MBA program later. This helps ensure that any trend we observe over time is not due to shifting demographics.
 
 We classify test units as belonging to a 'Metro' area if their corresponding county population is greater than $1,000,000$ ($n=396$). Similarly, we classify test units as belonging to a 'Rural' area if the county population is less than $100,000$ ($n=342$). It should be noted that these thresholds are being applied at the county level. An accepted convention, when considering populations, is to refer to higher resolution ``tracks of land'' (e.g., municipalities) \cite{censusMSA}. We choose our own thresholds that are consistent with general breakdown of the US population: about $20\%$ of the US population resides in rural areas. With our choice, we also have approximately $20\%$ of the dataset being classified as rural \cite{metroRural}. Our choice of the threshold allows us to select the top $50$ most populous metropolitan subset while also ensuring a similar sample size for the rural subset \cite{censusMSA}.
 
+\subsection{Daily Patterns Preprocessing}
 
-\subsection{Diurnal Data Usage Preprocessing}
+All measurement timestamps in the FCC MBA raw datasets use the Coordinated Universal Time (UTC). The unit profile dataset provides a timezone offset for each test unit. We used that information to convert UTC timestamps to the test unit's local time. This step reduced the number of test units available for daily patterns analysis to approximately 3000.
 
-We compare the average hourly downloaded and uploaded data per user on each month before and after COVID-19. The downloaded data are the sum of bytes that the customer received from the internet to wired LAN devices and the Wi-Fi devices, and the uploaded data are the sum of bytes that the customer transmitted from wired LAN devices and Wi-Fi devices to the internet.
+For some test units and months, a daylight savings time conversion should also have been performed. We omitted this step as it would not have changed our daily traffic patterns significantly.
 
-Since timestamps in the datasets are in coordinated universal time and users locate at different areas, in order to get the time of download or upload event at local time, we add the time zone offset from the user profile to the recorded time.  We extract the year, month, and hour from the local time, and shift the timezone according to user's location profile data.
-% , and handle some special cases: (1) for hour, there is some location behind coordinated universal time and if the hour in local time is negative, add the value by $24$. (2) For month, if the value of hour in local time is negative and the day is $1$, we subtract the value of extracted month by 1 because it will be the last date of the previous month, and (3) for year, if the value of hour in local time is negative, the month is 1 and the day is 1, we subtract the value of extracted year by 1 since it will be the last date of the previous year.
-For the users, we focus on users with the test unit keep sending data from January, 2019 to June, 2020. We ignore the users with invalid data, e.g., unrealistic amounts of user traffic.
-% We notice that the number of bytes that the customer transmitted from wired LAN devices to the internet for some users is the value of maximum integer. The possible reason is that the device measuring that value may be broken so we ignore all the users who have those values.
-
-For each month, the average downloaded data and uploaded data are defined as
+For each month, we define the average downloaded and uploaded data as
 
 \begin{equation}
-    AVG_{\text{download}} =\frac{SUM(\text{download data})}{COUNT(\text{valid users})}
+    AVG_{\text{download}} =\frac{SUM(\text{download data})}{COUNT(\text{test unit})}
 \end{equation}
 \begin{equation}
-    AVG_{\text{upload}} =\frac{SUM(\text{upload data})}{COUNT(\text{persistent users})}
+    AVG_{\text{upload}} =\frac{SUM(\text{upload data})}{COUNT(\text{test unit})}
 \end{equation}
-where ``valid users" indicates the users with the test unit keep sending data from January, 2019 to June, 2020.
+where ``test unit" refers to test units that kept sending measurements from January 2019 to June 2020, i.e., we focus on test units that have been running for over a year and can thus be considered stable.
 
-% \subsection{Average Speed}
-% \subsection{Packet Loss Analysis}
 
 \section{Data Analysis}
 \label{sec:data-analysis}
@@ -350,8 +347,8 @@ Furthermore, based on the graphs and information presented, we found that the CO
 
 This project is a working in progress. some of the next steps would be continuing analyzing the changes in internet usage, e.g., analyzing changes in latency.
 
-\section{Acknowledgements}
-\label{sec:acknowledgements}
+\section*{Acknowledgment}
+\label{sec:acknowledgment}
 
 Jessica De Oliveira Moreira was funded by Craig Newmark Philanthropies while working on the project. She would also like to thank to the DIMACS REU Summer 2020 Research program and the Barnard Computer Science department for additional support.
 
