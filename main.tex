@@ -296,12 +296,13 @@ where ``test unit" refers to test units that kept sending measurements from Janu
 
 \section{Average Speed}
 \label{sec:average-speed}
-Given that internet consumption generally increased across the United States in the patterns described in earlier section, a natural next question is to see if this increase led to changes in network performance. By knowing that the average volume of data per test unit increased significantly, one would expect that the average internet speeds people experienced during the pandemic would also change.
+
+Given that internet data consumption generally increased across the United States in the patterns described in earlier sections, an obvious question to ask if this increase led to changes in perceived network performance, e.g., due to increased network congestion. Knowing that the average volume of data per test unit increased significantly, one would expect the average internet upload or download speed to also change.
 
 \subsection{Average Download Speed}
 \label{sec:average-download-speed}
 
-In order to understand how the COVID-19 outbreak impacted the average download speed experienced by consumers, we calculate the ratio between the average download speed that users experienced between January and March 2020. Defining $S_{\text{download}}$ as the download speed, we compute the ratio by the following metric:
+In order to understand how the COVID-19 outbreak impacted the average download speed experienced by fixed broadband internet users, we calculate the ratio between the average download speed that users experienced between January and March 2020. Let $S_{\text{download}}$ be the download speed, we compute the average download speed ratio as follows:
 
 \begin{equation}
 AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download},\, \text{Mar}}}-AVG_{S_{\text{download},\, \text{Jan}}}}{AVG_{S_{\text{download},\, \text{Jan}}}}\times 100
@@ -311,7 +312,9 @@ AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download},\, \text{Mar}}}-AVG_
 % ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
 % \end{equation}
 
-Figure \ref{fig:downloadspeed2020} shows the results of the compilation of the ratios in a CDF. It is possible to infer that approximately 60\% of the users experienced a decrease in their average download speed from January to March. However, the decrease was not too significant, since for most part of the users, it was smaller than 5\%. Therefore, while a significant number of users experience a decrease in average download speed as other studies suggest, not many experience a severe decrease. Cooper affirmed that although some ISPs were able to hold up the increase in internet consumption, some cities felt the impact of the increase in data consumption leading users to experience a decrease in their download speed, e.g., the download speed in New York City decreased by 24\% in March \cite{cooper}. This expressive decrease in the download speed in some cities is a result of the decrease of average download speed that consumers have experienced from January to March in 2020 and vice-versa.
+Figure \ref{fig:downloadspeed2020} shows the result in the form of a Cumulative Distributed Function (CDF). We see that approximately 60\% of the users experienced a decrease in their average download speed from January to March 2020. However, the decrease was not too significant, since for most of the users, the decrease was smaller than 5\%. Therefore, while a significant number of users experienced a decrease in average download speed as other studies suggest, not many experienced a severe decrease.
+
+Cooper argued that although some ISPs were able to keep up with the increase in internet consumption, some cities felt the impact of the increase in data consumption leading users to experience a decrease in their download speed, e.g., the download speed in New York City decreased by 24\% in March \cite{cooper}.
 
 % \begin{figure}
 % \centering
@@ -322,7 +325,8 @@ Figure \ref{fig:downloadspeed2020} shows the results of the compilation of the r
 
 \subsection{Average Upload Speed}
 \label{sec:average-upload-speed}
-Similarly to the average download speed, we calculate the ratio of the average upload speed experienced by users between January and March 2020. Defining $S_{\text{upload}}$ as the upload speed, we compute the average upload speed by the metric:
+
+Similarly, we calculate the average upload speed ratio from January to March 2020. Let $S_{\text{upload}}$ be the upload speed, we can calculate the average upload speed as follows:
 
 \begin{equation}
 AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload},\, \text{Mar}}}-AVG_{S_{\text{upload},\, \text{Jan}}}}{AVG_{S_{\text{upload},\, \text{Jan}}}}\times 100
@@ -332,7 +336,7 @@ AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload},\, \text{Mar}}}-AVG_{S_{
 % ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
 % \end{equation}
 
-Figure \ref{fig:uploadspeed2020} presents the compiled result of these ratios. Approximately 70\% of consumers (called unit-ids in the graph) saw their average upload speed decreasing from January to March 2020. As people transitioned most of their activities to a virtual environment, such as working and studying from home and had to log in calls and virtual conferences more often, it could be expected an increase in data upload (as Figure \ref{fig:upload2020} shows) and, consequently, a decrease in the average upload speed, since there were more data being uploaded than before. Similarly to the situation observed with the download speed, while 70\% of consumers experienced a decrease in their upload speed, this decrease was also modest, mostly less of 5\%.
+Figure \ref{fig:uploadspeed2020} shows the result. Approximately 70\% of users (called unit-ids in the graph) saw their average upload speed decreasing from January to March 2020. As people transitioned most of their activities online, e.g., work from home, remote learning, and video conferences, an increase in uploaded data volumes was expected (as Figure \ref{fig:uploadspeed2020} shows) and, consequently, a decrease in the average upload speed. Similarly to the situation observed with the download speed, while 70\% of consumers experienced a decrease in their upload speed, this decrease was also modest, mostly less of 5\%.
 
 % \begin{figure}
 % \centering
