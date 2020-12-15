@@ -26,7 +26,7 @@ We use number the total number of sent and lost UDP datagrams to calculate packe
     Packet \ Loss\, \% = \frac{\#Failure }{\#Failure + \#Success} \times 100
 \end{equation}
 
-We calculate the above for the $95\%$ quantile of all users as opposed to the average value, because we are primarily interested in studying the packet loss patterns for the subset of users who experience higher packet loss.
+Previous studies suggested that the majority of the US did not experience any degradation of network performance \cite{kovacs}. We thus focus on the subset of the users that did experience network degradation and study packet loss at the $95\%$ quantile, i.e., users at the higher end of the packet loss spectrum.
 
 \subsection{Daily Packet Loss}
 

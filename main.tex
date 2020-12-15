@@ -215,7 +215,7 @@ Census block groups are designed to contain a specific number of people and ther
 
 FIPS census identifiers have a hierarchical structure where the first two digits refer to the state, while the subsequent three refer to the county within the state. Thus, to map test units to populations, we extract the county from each test unit's FIPS census identifier and map it to a population using the publicly-available 2019 US Census Bureau dataset \cite{census}. In this step, we must exclude approximately 180 test units that have a state-level census identifier only (counties with fewer than 1000 people).
 
-Among the test units for which we were able to obtain county population, we focus specifically on those that have participated in the study since January 2019 ($n=1692$), i.e., we exclude test units that have joined the FCC MBA program later. By comparing the same group of users in 2019 and 2020, we can help ensure that any change we observe over time is due to factors like the pandemic and not shifting demographics.
+Among the test units for which we were able to obtain county population, we focus specifically on those that have participated in the study since January 2019 (1692 test units in total), i.e., we exclude test units that have joined the FCC MBA program later. This helps ensure that when we compare 2019 and 2020 data, any changes that we observe will be due to external factors like the pandemic and not due to changing test unit sample size.
 
 We classify test units as belonging to a 'Metro' area if their corresponding county population is greater than $1,000,000$ ($n=396$). Similarly, we classify test units as belonging to a 'Rural' area if the county population is less than $100,000$ ($n=342$). It should be noted that these thresholds are not being applied at the county level. An accepted convention, when considering populations, is to refer to higher resolution ``tracks of land'' (e.g., municipalities) \cite{censusMSA}. We choose our own thresholds that are consistent with general breakdown of the US population: about $20\%$ of the US population resides in rural areas. With our choice, we also have approximately $20\%$ of the dataset being classified as rural \cite{metroRural}. Our choice of the metro threshold allows us to select the top $50$ most populous metropolitan subset while also ensuring a similar sample size to the rural subset \cite{censusMSA}.
 
@@ -297,7 +297,7 @@ where ``test unit" refers to test units that kept sending measurements from Janu
 \section{Average Speed}
 \label{sec:average-speed}
 
-Given that internet data consumption generally increased across the United States in the patterns described in earlier sections, an obvious question to ask if this increase led to changes in perceived network performance, e.g., due to increased network congestion. Knowing that the average volume of data per test unit increased significantly, one would expect the average internet upload or download speed to also change.
+Given that internet data consumption generally increased across the United States in the patterns described in earlier sections \cite{feldmann2020lockdown,liu2020characterizing}, an obvious question to ask if this increase led to changes in perceived network performance, e.g., due to increased network congestion. Knowing that the average volume of data per test unit increased significantly, one would expect the average internet upload or download speed to also change.
 
 \subsection{Average Download Speed}
 \label{sec:average-download-speed}
