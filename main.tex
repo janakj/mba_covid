@@ -347,11 +347,14 @@ Figure \ref{fig:uploadspeed2020} shows the result. Approximately 70\% of users (
 
 \input{kerry.tex}
 
-\section{Challenges}
-\label{sec:challenges}
-Because we were working with a big dataset, in total \SI{300}{\giga\byte} of data, one of the main challenges that we faced was to find an application that would be able to process all this data. We decided to use a virtual machines on Google Cloud because we thought it would be enough to treat and process all the datasets. However, even using Google Cloud, the virtual machines run out of memory and it was necessary find different ways to storage the data, such as transitioning to BigQuery.
+\section{Discussion}
+\label{sec:discussion}
 
-Even though this is a professional dataset gathered by FCC, there was still some invalid and noisy data and some lack of data description, e.g., outdated information about test units. These implications related to the dataset led to some additional challenges to analyze it. Moreover, since we do not have the datasets with applications information, we cannot figure out what specific applications contribute to the change of data usage though we discover the increase of the internet usage.
+Because we were working with large datasets, \SI{300}{\giga\byte} of data in total from January 2019 to June 2020, one of the main challenges that we faced was to find an application that would be able to process all this data. We decided to use Google Cloud BigQuery and process all the data in Google Cloud VMs. However, even in this configuration, some of the queries that analyzed the data over long time intervals took up to ten minutes to complete.
+
+One of the biggest limitations in our analysis were outdated unit profile and unit census datasets. These datasets are published by the FCC as part of the MBA raw data. While the raw MBA datasets are published regularly, unit profile and unit census datasets are only updated when a new annual report is published. This is understandable since some of the information in those datasets need to be manually cross-validated. At the time of writing, the 9th FCC MBA report was the most recent report. That report covered September-October 2018, hence our most recent unit profile and unit census datasets were from 2018.
+
+For the purpose of assessing users' behavior from network traffic patterns, we were limited by the fact that the FCC MBA datasets do not provide application or service level information about the traffic. Thus, we were not able to examine the relative contribution of various types of applications (VoIP, Youtube, video conferencing) to traffic patterns. Others have examined such data in the context of COVID-19 related lockdowns, e.g., the authors in \cite{bottger2020internet}.
 
 \section{Conclusion}
 \label{sec:conclusion}
