@@ -1,55 +1,48 @@
 \begin{figure*}[t]
   \begin{minipage}[t]{0.496\linewidth}
-    \centering 
-    \includegraphics[width=0.98\linewidth]{figs/packet_loss_per_day.png} 
-    \caption{Graph comparing the 95\% quantile packet loss per day for the month January, March 2019 and January, March 2020.} 
-    \label{fig:packetlossperday} 
+    \centering
+    \includegraphics[width=0.98\linewidth]{figs/packet_loss_per_day.png}
+    \caption{Graph comparing the 95\% quantile packet loss per day for the months January, March 2019 and January, March 2020.}
+    \label{fig:packetlossperday}
   \end{minipage}
-  \begin{minipage}[t]{0.496\linewidth} 
-    \centering 
-    \includegraphics[width=0.98\linewidth]{figs/packet_loss_per_hour.png} 
-    \caption{Graph comparing the 95\% quantile packet loss per hour for the month January, March 2019 and January, March 2020.} 
-    \label{fig:packetlossperhour} 
-  \end{minipage} 
+  \begin{minipage}[t]{0.496\linewidth}
+    \centering
+    \includegraphics[width=0.98\linewidth]{figs/packet_loss_per_hour.png}
+    \caption{Graph comparing the 95\% quantile packet loss per hour for the months January, March 2019 and January, March 2020.}
+    \label{fig:packetlossperhour}
+  \end{minipage}
 \end{figure*}
 
 \section{Packet Loss Analysis}
-Apart from studying the data usage volume, we can also examine the effects of COVID-19 on  packet loss. As people were showing increased Internet usage during the lockdown period, potential network congestion might happen and can be reflected on the internet packet loss rate. To quantify the packet loss rate, we define the metric as:
+\label{sec:packet-loss-analysis}
+
+Apart from studying data usage and connection speed patterns, we can also examine the effects of COVID-19 restrictions on packet loss. With increasing fixed broadband internet usage during the lockdown period, network congestion is also likely to increase. Increasing network congestion will manifest itself in increasing packet loss.
+
+Each test unit performs a UDP latency measurement periodically throughout the day. During the measurement, the test unit sends a series of UDP datagrams to a pre-defined set of servers. Parameters such as minimum, maximum, and average round  trip time are recorded, as well as the number of lost UDP packets. The UDP test is only performed when there is no user activity on the connection. Thus, the results are primarily influenced by the performance of the fixed broadband connection rather than local user traffic.
+
+We use number the total number of sent and lost UDP datagrams to calculate packet loss rate. To quantify the packet loss rate, we define the metric as:
 
 \begin{equation}
     Packet \ Loss\, \% = \frac{\#Failure }{\#Failure + \#Success} \times 100
 \end{equation}
 
-We calculate the above for the $95\%$ quantile of all users as opposed to the average value, because we are more interested in studying the packet loss change from top users. We again shift the time to users' time zones locally.
+We calculate the above for the $95\%$ quantile of all users as opposed to the average value, because we are more interested in studying the packet loss patterns for the subset of users who experience higher packet loss.
 
 \subsection{Daily Packet Loss}
 
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=1.0\linewidth]{figs/packet_loss_per_day.png}
-% \caption{Graph comparing the 95\% quantile packet loss per day for the month January, March 2019 and January, March 2020.}
-% \label{fig:packetlossperday}
-% \end{figure}
-  
-We found a significant increase in packet loss starting from mid-March 2020 (Figure \ref{fig:packetlossperday}), the period when some states initiated lockdown policy. The growth of this packet loss rate showed more than 40--50\% compared to that of early March, which is before the pandemic. On late March 2020, packet loss percentage could be 80\% higher than that before the pandemic, implying that large traffic congestion might occur. Since we do not observe similar trend from the same month in 2019, this suggests that this increase is not due to noise and is instead due to activities such as tele-work. This increase also coincides with the increase in downloaded data we observed in metro areas in Figure \ref{fig:downloadmetro_rural}.
+Figure \ref{fig:packetlossperday} shows the 95\% quantile of daily packet loss over January and March 2019 and 2020. We see a significant increase in packet loss starting from mid-March 2020. Mid-March is the period when some US states began imposing statewide lockdown orders. In this time period, the packet loss rate grows by 40--50\% compared to early March 2020, which is before the pandemic. Towards the end of March 2020, packet loss rate is 80\% higher than that before the pandemic, implying that some network congestion might occur.
 
-However, by the end of March, the loss rate again started to decrease compared to the highest level. We speculate that the rapid response of the network operations helped adjust the network capacity to the increasing need.
+Since we do not observe similar trends in 2019, this suggests that this increase is not due to noise and might be instead due to the additional traffic generated by activities such as work from home, distance learning, and video conferencing. This increase also coincides with the increase in downloaded data we observed in metro areas in Figure \ref{fig:downloadmetro_rural}.
+
+Note, however, that by the end of March the loss rate again starts to decrease. We speculate that this might be due to the rapid response of network and service operators who rapidly began adding capacity to meet the increasing need \cite{liu2020characterizing}.
 
 \subsection{Hourly Packet Loss}
 
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=1.0\linewidth]{figs/packet_loss_per_hour.png}
-% \caption{Graph comparing the 95\% quantile packet loss per hour for the month January, March 2019 and January, March 2020.}
-% \label{fig:packetlossperhour}
-% \end{figure}
+In this section, we examine the influence of the hour of the day on packet loss. Figure \ref{fig:packetlossperhour} the 95\% quantile of packet loss over the course of a day in January, March 2019 and 2020. We found the packet loss ratio changing over the course of the day, with the maximum around 20:00. This is consistent with data upload and download patterns discussed earlier.
 
-When considering the effect of the hour of the day, we found this packet loss change showed some shifts in hourly pattern as well, which again might be related to people's online activities.
+In March 2020, the packet loss rate increased steeply during daytime from 7:00 to 22:00, potentially due to the users' growing online activities like remote learning, work from home, etc. However, this change was more evident during the evening. For example, we saw an around 59\% growth from 18:00 to 22:00 when comparing March to January 2020. This time period lies outside of traditional working hours - suggesting that packet loss is more positively related to the increased traffic due to recreational activities rather than remote working or distance learning.
 
-As we discussed in the daily data section above, the hourly packet loss rate showed similar trend due to the daily patterns of users’ Internet behavior (Figure \ref{fig:packetlossperhour}). In March 2020, the packet loss rate increased steeply in the daytime from 7:00 to 22:00, potentially due to the users' growing online activities like remote learning, work from home, etc. However, this change was more evident during the evening. For example, we saw an around 59\% growth from 18:00 to 22:00 when comparing March to January 2020. This time period lies outside of traditional working hours - suggesting that packet loss is more positively related to the increased traffic due to recreational activities rather than remote working or distance learning. 
-
-Our results are consistent with Candela et al. \cite{Candela2020latency}, as they found the increase of packet loss might be affected by factors like the type of target (whether belonging to a content delivery network or not), the version of the Internet Protocol, and the time of the day.
-
+Our results are consistent with Candela et al. \cite{Candela2020latency}, as they found the increase of packet loss might be affected by factors like the type of server (whether belonging to a content delivery network or not), the version of the Internet Protocol, and the time of the day.
 
 %\subsection{95\% Hourly Packet Loss}
 %Besides, we notice the same slight increase of capacity loss through the hourly packet loss data.
