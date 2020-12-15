@@ -20,13 +20,13 @@ Apart from studying data usage and connection speed patterns, we can also examin
 
 Each test unit performs a UDP latency measurement periodically throughout the day. During the measurement, the test unit sends a series of UDP datagrams to a pre-defined set of servers. Parameters such as minimum, maximum, and average round  trip time are recorded, as well as the number of lost UDP packets. The UDP test is only performed when there is no user activity on the connection. Thus, the results are primarily influenced by the performance of the fixed broadband connection rather than local user traffic.
 
-We use number the total number of sent and lost UDP datagrams to calculate packet loss rate. To quantify the packet loss rate, we define the metric as:
+We use number the total number of sent and lost UDP datagrams to calculate packet loss rate. To quantify the packet loss rate for one test unit, we define the metric as:
 
 \begin{equation}
     Packet \ Loss\, \% = \frac{\#Failure }{\#Failure + \#Success} \times 100
 \end{equation}
 
-We calculate the above for the $95\%$ quantile of all users as opposed to the average value, because we are more interested in studying the packet loss patterns for the subset of users who experience higher packet loss.
+We calculate the above for the $95\%$ quantile of all users as opposed to the average value, because we are primarily interested in studying the packet loss patterns for the subset of users who experience higher packet loss.
 
 \subsection{Daily Packet Loss}
 
@@ -42,7 +42,7 @@ In this section, we examine the influence of the hour of the day on packet loss.
 
 In March 2020, the packet loss rate increased steeply during daytime from 7:00 to 22:00, potentially due to the users' growing online activities like remote learning, work from home, etc. However, this change was more evident during the evening. For example, we saw an around 59\% growth from 18:00 to 22:00 when comparing March to January 2020. This time period lies outside of traditional working hours - suggesting that packet loss is more positively related to the increased traffic due to recreational activities rather than remote working or distance learning.
 
-Our results are consistent with Candela et al. \cite{Candela2020latency}, as they found the increase of packet loss might be affected by factors like the type of server (whether belonging to a content delivery network or not), the version of the Internet Protocol, and the time of the day.
+Our results are consistent with Candela et al. \cite{Candela2020latency}, as they found the increase of packet loss might be affected by factors like the type of server, the version of the Internet Protocol, and the time of the day.
 
 %\subsection{95\% Hourly Packet Loss}
 %Besides, we notice the same slight increase of capacity loss through the hourly packet loss data.
