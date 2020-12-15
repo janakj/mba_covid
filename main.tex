@@ -78,7 +78,8 @@
 \maketitle
 
 \begin{abstract}
-The COVID-19 outbreak has changed the way that people interact. With the new stay-at-home and social distancing orders, many ordinary activities were changed drastically, e.g., going to work and classes, living on campuses and traveling. In this new social environment, since early March people in the United States were required to quarantine and do all their activities from home. Thus, in this project we researched how COVID-19 has impacted fixed broadband internet usage in the  United States. While analyzing the fixed broadband raw datasets collected by the Federal Communications Commission (FCC), we were able to identify how aspects of internet usage such as amounts of data downloaded and uploaded by users and the average download and upload speed changed due to COVID-19. Moreover, through this analysis, we could also learn about how people have changed their behaviors while using the internet during COVID-19.
+The COVID-19 pandemic and related restrictions forced many to work, learn, and socialize from home over the internet. There appears to be consensus that internet infrastructure in the developed world handled the resulting traffic surge well. In this paper, we study network measurement data collected by the Federal Communication Commission's (FCC) Measuring Broadband America (MBA) program before and during the pandemic in the United States. We analyze the data to understand the impact of lockdown orders on the performance of fixed broadband internet infrastructure across the US, and also attempt to correlate internet usage patterns with the changing behavior of users during lockdown. We found the key metrics such as change in data usage to be generally consistent with the literature. Through additional analysis, we found differences between metro and rural areas, changes in weekday, weekend, and hourly internet usage patterns, and indications of network congestion for some users.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -88,21 +89,30 @@ Computer networks, internet.
 \section{Introduction}
 \label{sec:introduction}
 
-Much has been written about whether the residential internet infrastructure in the United States can cope with the sudden conversion of work into tele-work, school into distance learning and movies into Netflix binging, albeit usually based on data of dubious quality. However, network measurements may also tell us about the effort and success of social distancing, the ability of different communities to move to internet-mediated modes of interaction and their sustainability.
+Much has been written about whether the residential internet infrastructure in the United States can cope with the sudden conversion of work into tele-work, school into distance learning and movies into Netflix binging, albeit usually based on data of dubious quality. This topic has seen renewed interest in 2020 when the COVID-19 pandemic suddenly forced a large percentage of the US population to work, learn, and socialize from home over the internet for extended periods of time.
 
-We attempt to address both questions in this paper. First, we describe some of the sampling bias limitations of classical user-initiated network speed measurements in estimating how well infrastructure holds up during shifts in usage. For example, seeming reductions in speed may be caused by increased Wi-Fi interference or simply by increased usage by people who have lower internet speeds, whether by deliberate choice, availability or affordability.
+Network measurements based on data from a variety of vantage points tell us about the performance of internet infrastructure. However, such measurements may also tell us about the effort and success of social distancing, mobility trends and patterns, the ability of different communities to move to internet-mediated modes of interaction and their longer-term sustainability.
 
-We then draw on the FCC Measuring Broadband America (MBA) raw data, available longitudinally since 2011, to estimate the impact of increased internet usage on a variety of performance metrics, including throughput, latency and packet loss, disaggregating by coarse-grained geography and technology. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been shown to increase upstream bandwidth usage by 10--40\%.
+We attempt to address both questions in this paper. Drawing on the Federal Communications Commission's (FCC) Measuring Broadband America (MBA) program dataset \cite{mba}, available longitudinally since 2011, we estimate the impact of increased internet usage during the pandemic on a variety of performance metrics. We specifically look at throughput, latency and packet loss, disaggregating by coarse-grained geography, population density, and time period. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been a trend during the pandemic.
 
-At least as important as measuring the impact of COVID-19 on internet performance is using indirect metrics, such as internet usage, to estimate the success of social distancing measures, while maintaining user privacy. We draw on two metrics to explore whether we can detect the daytime and evening usage of residential internet users, indicating home schooling and work from home, as well as observance of stay-at-home orders on weekends. MBA suspends throughput measurements during periods of significant usage, such as video conferencing, and also tabulates total use. Thus, we might be able to deduce when households are actively using their broadband connection and whether such usage reflects, for example, the earlier restrictions imposed in Washington State or in the New York metro area.
+At least as important as measuring the impact of COVID-19 on internet performance is using indirect metrics, such as data usage, to estimate the success of social distancing measures, while maintaining user privacy. We draw on two metrics to explore whether we can detect the daytime and evening usage of residential internet users, indicating work from home or distance learning, as well as observance of stay-at-home orders on weekends. 
 
-The measurement data have known limitations. For example, they only covers the largest ISPs and omits fixed wireless and satellite providers, the latter by their choice. We describe how more systematic data gathering during both short-term natural disasters and long-term epidemics could supplement our understanding of how households deal with such crises, providing information to policy makers in near real-time and in a privacy-respecting manner.
+The MBA program records user network data usage, and also suspends throughput measurements during periods of significant network activity, such as video conferencing. Thus, we might be able to deduce when households are actively using their fixed broadband connection and whether such usage reflects, for example, the earlier restrictions imposed in Washington State or in the New York metro area.
 
-% Due to government imposed lockdowns, a large percentage of the population had to depend in residential broadband internet connection for work, entertainment, education, and social activities.
+Our key findings can be summarized as follows:
+\begin{itemize}
+    \item We found a significant increase in data usage, consistent with lockdown timeline and observations made by other researchers.
+    \item The traffic spike in rural areas is initially shorter and less pronounced than in metro areas, however, we see the trend to reverse by June 2020.
+    \item Our data suggests that users in metro areas react to government recommendations faster and more drastically than users in less populated areas.
+    \item We see a significant increase in daytime weekend traffic from March to May 2020. By June the levels return to their normal pre-lockdown levels, suggesting that users might have complied with stay-at-home recommendations only initially.
+    \item Consistent with others, we see the weekday daytime traffic pattern morphing into the weekend pattern.
+    \item There was a slight 5\% decrease in average speed for about 60-70\% of users.
+    \item We found significant almost 50\% increase in packet loss for some users in mid-March 2020, with levels returning to normal by the end of the month, suggesting that network operators addressed increasing network congestion swiftly.
+\end{itemize}
 
-In early March, the US was hit by the COVID-19 outbreak. In order to control the spread of the virus and flatten the infection curve, states throughout the country implemented stay-at-home orders which forced people to quarantine. As people started quarantining at home, many started executing their daily activities, e.g., work and studies, in an online environment.
+Our study is based solely on the FCC MBA dataset which has known limitations. For example, it only covers the largest ISPs and omits fixed wireless and satellite providers, the latter by their choice. We also briefly discuss how more systematic data gathering during both short-term natural disasters and long-term epidemics could supplement our understanding of how households deal with such crises, providing information to policy makers in near real-time and in a privacy-respecting manner.
 
-Considering this new format of social interaction caused by COVID-19, this study aims to understand how this virus has impacted internet usage in the United States. It identifies the changes in internet usage caused by the COVID-19 outbreak, e.g., change in the average download and upload data consumption, in the average download and upload speed, in the peak periods of usage, and in latency. By observing the changes in the way that internet has been used, this study also infers and presents information about people's behavior during COVID-19, e.g., if people complied with stay-at-home orders, engaged in online learning, and worked from home.
+Several authors published similar studies already while the pandemic was still ongoing. Existing studies are based on data from network services \cite{bottger2020internet,akamai,facebook}, ISPs and internet exchange points \cite{feldmann2020lockdown,liu2020characterizing}, or mobile networks \cite{lutu2020characterization}. Our work aims to complement such efforts. We study similar metrics using data collected by US-based fixed broadband internet users participating in the FCC MBA program.
 
 The rest of the paper is organized as follows. We review related work on COVID-19 impacts on the internet in Section \ref{sec:related-work}. The datasets used in all our analyses are discussed in Section \ref{sec:datasets}. We describe our methodology in Section \ref{sec:methodology}. In Section \ref{sec:data-usage-by-population-demographics} we examine broadband internet usage during lockdown in metropolitan and rural counties. Section \ref{sec:hourly-data-usage-patterns} examines hourly data usage patterns before and during lockdown. In Section \ref{sec:average-speed} we look at the effects of COVID-19 lockdown on fixed broadband upload and download speeds. Section \ref{sec:packet-loss-analysis} examines packet loss during lockdown. We discuss our findings in Section \ref{sec:discussion} and conclude and discuss future work in Section \ref{sec:conclusion}.
 
@@ -225,13 +235,13 @@ All measurement timestamps in the FCC MBA raw datasets use the Coordinated Unive
 
 For some test units and months, a daylight savings time conversion should also have been performed. We omitted this step as it would not have changed our daily traffic patterns significantly.
 
-For each month, we define the average downloaded and uploaded data as
+For each month, we define the average downloaded ($D$) and uploaded data ($U$) as
 
 \begin{equation}
-    AVG_{\text{download}} =\frac{SUM(\text{download data})}{COUNT(\text{test unit})}
+    \overline{D} =\frac{SUM(\text{download data})}{COUNT(\text{test unit})}
 \end{equation}
 \begin{equation}
-    AVG_{\text{upload}} =\frac{SUM(\text{upload data})}{COUNT(\text{test unit})}
+    \overline{U} =\frac{SUM(\text{upload data})}{COUNT(\text{test unit})}
 \end{equation}
 where ``test unit" refers to test units that kept sending measurements from January 2019 to June 2020, i.e., we focus on test units that have been running for over a year and can thus be considered stable.
 
@@ -302,10 +312,10 @@ Given that internet data consumption generally increased across the United State
 \subsection{Average Download Speed}
 \label{sec:average-download-speed}
 
-In order to understand how the COVID-19 outbreak impacted the average download speed experienced by fixed broadband internet users, we calculate the ratio between the average download speed that users experienced between January and March 2020. Let $S_{\text{download}}$ be the download speed, we compute the average download speed ratio as follows:
+In order to understand how the COVID-19 outbreak impacted the average download speed experienced by fixed broadband internet users, we calculate the ratio between the average download speed that users experienced between January and March 2020. Let $S_{\text{D}}$ be the download speed, we compute the average download speed ratio as follows:
 
 \begin{equation}
-AVG_{S_{\text{download}}}\% = \frac{AVG_{S_{\text{download},\, \text{Mar}}}-AVG_{S_{\text{download},\, \text{Jan}}}}{AVG_{S_{\text{download},\, \text{Jan}}}}\times 100
+\overline{S}_{\text{D}}\% = \frac{\overline{S}_{\text{D},\, \text{Mar}}-\overline{S}_{\text{D},\, \text{Jan}}}{\overline{S}_{\text{D},\, \text{Jan}}}\times 100
 \end{equation}
 
 % \begin{equation}
@@ -326,10 +336,10 @@ Cooper argued that although some ISPs were able to keep up with the increase in 
 \subsection{Average Upload Speed}
 \label{sec:average-upload-speed}
 
-Similarly, we calculate the average upload speed ratio from January to March 2020. Let $S_{\text{upload}}$ be the upload speed, we can calculate the average upload speed as follows:
+Similarly, we calculate the average upload speed ratio from January to March 2020. Let $S_{\text{U}}$ be the upload speed, we can calculate the average upload speed as follows:
 
 \begin{equation}
-AVG_{S_{\text{upload}}}\% = \frac{AVG_{S_{\text{upload},\, \text{Mar}}}-AVG_{S_{\text{upload},\, \text{Jan}}}}{AVG_{S_{\text{upload},\, \text{Jan}}}}\times 100
+\overline{S}_{\text{U}}\% = \frac{\overline{S}_{\text{U},\, \text{Mar}}-\overline{S}_{\text{U},\, \text{Jan}}}{\overline{S}_{\text{U},\, \text{Jan}}}\times 100
 \end{equation}
 
 % \begin{equation}
