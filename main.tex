@@ -366,15 +366,22 @@ Furthermore, based on the graphs and information presented, we found that the CO
 \subsection{Future Work}
 \label{sec:future-work}
 
-%This project is a working in progress. some of the next steps would be continuing analyzing the changes in internet usage, e.g., analyzing changes in latency. <- old future work section
+The results presented in this report present various potential future avenues for exploration.
 
-The results presented in this report present various future avenues for exploration.
+% more accurate way to calculate population density
+In our population demographics analysis, we had used county-level populations as a measure of population density. Since the unit census dataset records a census block group (a smaller census unit) for each test unit, there is a more accurate way to calculate population density. It might be possible to obtain a boundary polygon for each census block group, e.g., from an existing ArcGIS database, and then calculate population density from the block group's area and population.
 
-In our population demographics analysis, we had used county-level populations as a measure of population density. Instead, we could potentially use an ArcGIS dataset that can provide the area of each census object so we can directly calculate population density. Additionally, having more recent unit profile data can help us increase the sample size of our analysis.
+% stale FCC MBA data
+In addition, having a more recent unit profile and unit census data could help us increase the test unit sample size used in our analysis. Since most of our analysis does not rely on the cross-validated ISP information included in the unit profile dataset, obtaining a partial (unpublished) unit profile data from the FCC would help us improve our analysis.
 
-Our hourly data usage patterns show significant changes over the course of the pandemic, but we do not know what specific applications contribute to these changes e.g. Netflix, Youtube, Zoom, etc. Incorporating other datasets with this information can help us better understand these changes. It would also be interesting to study if we observe similar changes to daily usage patterns for Fixed and Mobile Internet.
+% application-level information
+For user behavior analysis, the biggest limitation of our approach is that we do not know how specific applications contribute to the overall traffic for each test unit, e.g., Netflix, Youtube, Zoom, etc. Incorporating other datasets with this information obtained from other vantage points could help us better understand user behavior from network traffic patterns.
 
-We can also expand our study of network performance by including metrics such as Latency. We can further break-down this analysis by focusing on specific user technologies and see if technologies like cable had similar to changes to performance as satellite.
+% correlate fixed and mobile broadband internet usage datasets
+Interesting insights into user behavior during lockdown might be perhaps obtained by correlating fixed and mobile broadband internet usage. These two datasets, when used together, would present a more complete picture of user behavior.
+
+% analyze more metrics
+We have only analyzed a subset of the metrics provided by the FCC MBA dataset. Our study could be expanded by analyzing metrics such as latency, VoIP and media streaming performance, DNS performance, and others. Additionally, studying network performance by broadband connection type (cable, fiber, satellite) might provide additional insights. 
 
 \section*{Acknowledgment}
 \label{sec:acknowledgment}
