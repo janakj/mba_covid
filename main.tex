@@ -29,7 +29,7 @@
 \hypersetup{
   colorlinks=true,% Color URLs with urlcolor
   linkcolor=black,% The color for internal (cross-reference) links
-  urlcolor=blue,% The color for URLs (hyperlinks)
+  urlcolor=black,% The color for URLs (hyperlinks)
   citecolor=black,
   pdftitle={Social Distancing and the Internet: What Can Network Performance Measurements Tell Us?}
 }
@@ -369,9 +369,21 @@ For the purpose of assessing users' behavior from network traffic patterns, we w
 \section{Conclusion}
 \label{sec:conclusion}
 
-The study of average hourly downloaded and uploaded volume of data per test unit in each month indicates that the policies related to COVID-19, such as lockdown, stay-at-home order, work from home, etc., might increase the usage of internet in the United States on both weekdays and weekends.
+In this paper, we studied the data collected through the FCC MBA program from January 2019 to June 2020. Our goal was to understand the performance of fixed broadband internet in the United States before and during the COVID-19 pandemic, and also to look for clues about changing users' behavior based on their data usage patterns.
 
-Furthermore, based on the graphs and information presented, we found that the COVID-19 outbreak has impacted the consume of internet in the US. In terms of average consumption per user, from January 2020 to March 2020 (before and after COVID-19 hit the country) increased by 53\% for downloaded data and by 38\% for uploaded data. In addition to that, approximately 70\% of consumers experienced a decrease in their average download speed in March if compared to their average download speed in January, and approximately 80\% of users noticed a decrease in their average upload speed. These numbers show some of the impacts of COVID-19 in internet usage since this has been the most influential external factor to internet consumption in the US. Through these results that show that people indeed consumed more data in March, it can be inferred that people tended to comply to the stay at home orders and started doing most of their daily activities e.g., work and study, in a virtual environment.
+We uploaded the FCC MBA raw data from January 2019 to June 2020 into a Google Cloud BigQuery database, cleaned and pre-processed it, and then analyzed using Google Cloud Datalab (Jupyter) notebooks. We then analyzed the data from multiple perspectives: by geography and population size, by weekdays and weekends, and over the course of a day.
+
+Overall, we found a significant increase in fixed broadband data usage consistent with the lockdown timeline. Our observations from the FCC MBA data are more or less consistent with the observations that others made using data from different vantage points (e.g., ISP, IXP, network services). We reviewed and summarized some of the existing work in Section \ref{sec:related-work} for context.
+
+Broken down by geography and population density, our analysis shows traffic spikes in both rural and metro areas. However, the rural traffic spike is initially shorter and less pronounced. Towards June 2020 we see comparable traffic level values in metro and rural areas. Our data suggests that users in metro areas react to government recommendations faster and more swiftly than users in less populated areas.
+
+We further attempted to correlate local ordinances with county-level usage patterns for Los Angeles county. There, we saw the first traffic spike on March 14, a day after many schools in the county shutdown. Another spike came after the March 16 White House stay-at-home order. We note that our geography and demographic analysis is partially limited by older (2018) unit profile and unit census datasets and fairly small number of test units at county level.
+
+Looking at weekday and weekend traffic patterns, we saw a significant increase in daytime weekend traffic from March to May 2020. By June the levels return to their normal pre-lockdown levels, suggesting that users might have complied with stay-at-home recommendations only initially. Consistent with others, we see the weekday daytime traffic pattern changing into the weekend pattern, with a significant increase of uploaded and downloaded data during the day. We attribute most of that increase to distance learning and work from home.
+
+Our packet loss analysis uncovered a slight 5\% decrease in average speed for about 60-70\% of users. We also found significant almost 50\% increase in packet loss for some users in mid-March 2020, with levels returning to normal by the end of the month, suggesting that network operators might have addressed increasing network congestion swiftly.
+
+Our analysis of the average hourly downloaded and uploaded data indicates that the policies related to COVID-19, such as lockdown, stay-at-home order, work from home recommendation, etc., increase the usage of internet in the United States on both weekdays and weekends.
 
 \subsection{Future Work}
 \label{sec:future-work}
