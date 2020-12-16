@@ -80,6 +80,8 @@
 \begin{abstract}
 The COVID-19 pandemic and related restrictions forced many to work, learn, and socialize from home over the internet. There appears to be consensus that internet infrastructure in the developed world handled the resulting traffic surge well. In this paper, we study network measurement data collected by the Federal Communication Commission's (FCC) Measuring Broadband America (MBA) program before and during the pandemic in the United States. We analyze the data to understand the impact of lockdown orders on the performance of fixed broadband internet infrastructure across the US, and also attempt to correlate internet usage patterns with the changing behavior of users during lockdown. We found the key metrics such as change in data usage to be generally consistent with the literature. Through additional analysis, we found differences between metro and rural areas, changes in weekday, weekend, and hourly internet usage patterns, and indications of network congestion for some users.
 
+% Perhaps consider saying something about the implications of this work in the abstract if we end up submitting a revised version of the paper.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -93,7 +95,7 @@ Much has been written about whether the residential internet infrastructure in t
 
 Network measurements based on data from a variety of vantage points tell us about the performance of internet infrastructure. However, such measurements may also tell us about the effort and success of social distancing, mobility trends and patterns, the ability of different communities to move to internet-mediated modes of interaction and their longer-term sustainability.
 
-We attempt to address both questions in this paper. Drawing on the Federal Communications Commission's (FCC) Measuring Broadband America (MBA) program dataset \cite{mba}, available longitudinally since 2011, we estimate the impact of increased internet usage during the pandemic on a variety of performance metrics. We specifically look at throughput, latency and packet loss, disaggregating by coarse-grained geography, population density, and time period. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been a trend during the pandemic.
+We attempt to address both questions in this paper. Drawing on the Federal Communications Commission's (FCC) Measuring Broadband America (MBA) program dataset \cite{mba}, available longitudinally since 2011, we estimate the impact of increased internet usage during the pandemic on a variety of performance metrics. We specifically look at throughput and packet loss, disaggregating by coarse-grained geography, population density, and time period. Even though it usually does not draw much attention, we are particularly interested in upstream performance, as much more intense use of video conferencing tools has been a trend during the pandemic.
 
 At least as important as measuring the impact of COVID-19 on internet performance is using indirect metrics, such as data usage, to estimate the success of social distancing measures, while maintaining user privacy. We draw on two metrics to explore whether we can detect the daytime and evening usage of residential internet users, indicating work from home or distance learning, as well as observance of stay-at-home orders on weekends. 
 
@@ -102,19 +104,19 @@ The MBA program records user network data usage, and also suspends throughput me
 Our key findings can be summarized as follows:
 \begin{itemize}
     \item We found a significant increase in data usage, consistent with lockdown timeline and observations made by other researchers.
-    \item The traffic spike in rural areas is initially shorter and less pronounced than in metro areas, however, we see the trend to reverse by June 2020.
+    \item The traffic spike in rural areas is initially shorter and less pronounced than in metro areas, however, we see the trend start to reverse by June 2020.
     \item Our data suggests that users in metro areas react to government recommendations faster and more drastically than users in less populated areas.
     \item We see a significant increase in daytime weekend traffic from March to May 2020. By June the levels return to their normal pre-lockdown levels, suggesting that users might have complied with stay-at-home recommendations only initially.
     \item Consistent with others, we see the weekday daytime traffic pattern morphing into the weekend pattern.
-    \item There was a slight 5\% decrease in average speed for about 60-70\% of users.
-    \item We found significant almost 50\% increase in packet loss for some users in mid-March 2020, with levels returning to normal by the end of the month, suggesting that network operators addressed increasing network congestion swiftly.
+    \item We saw a slight 5\% decrease in average speed for about 60-70\% of users and also found a significant almost 50\% increase in packet loss for some users in mid-March 2020, suggesting that increased internet usage may have caused network congestion.
+    %with levels returning to normal by the end of the month, suggesting that network operators addressed increasing network congestion swiftly.
 \end{itemize}
 
 Our study is based solely on the FCC MBA dataset which has known limitations. For example, it only covers the largest ISPs and omits fixed wireless and satellite providers, the latter by their choice. We also briefly discuss how more systematic data gathering during both short-term natural disasters and long-term epidemics could supplement our understanding of how households deal with such crises, providing information to policy makers in near real-time and in a privacy-respecting manner.
 
 Several authors published similar studies already while the pandemic was still ongoing. Existing studies are based on data from network services \cite{bottger2020internet,akamai,facebook}, ISPs and internet exchange points \cite{feldmann2020lockdown,liu2020characterizing}, or mobile networks \cite{lutu2020characterization}. Our work aims to complement such efforts. We study similar metrics using data collected by US-based fixed broadband internet users participating in the FCC MBA program.
 
-The rest of the paper is organized as follows. We review related work on COVID-19 impacts on the internet in Section \ref{sec:related-work}. The datasets used in all our analyses are discussed in Section \ref{sec:datasets}. We describe our methodology in Section \ref{sec:methodology}. In Section \ref{sec:data-usage-by-population-demographics} we examine broadband internet usage during lockdown in metropolitan and rural counties. Section \ref{sec:hourly-data-usage-patterns} examines hourly data usage patterns before and during lockdown. In Section \ref{sec:average-speed} we look at the effects of COVID-19 lockdown on fixed broadband upload and download speeds. Section \ref{sec:packet-loss-analysis} examines packet loss during lockdown. We discuss our findings in Section \ref{sec:discussion} and conclude and discuss future work in Section \ref{sec:conclusion}.
+The rest of the paper is organized as follows. We review related work on COVID-19 impacts on the internet in Section \ref{sec:related-work}. The datasets used in all our analyses are discussed in Section \ref{sec:datasets}. We describe our methodology in Section \ref{sec:methodology}. In Section \ref{sec:data-usage-by-population-demographics} we examine broadband internet usage during lockdown in metropolitan and rural counties. Section \ref{sec:hourly-data-usage-patterns} studies hourly data usage patterns before and during lockdown. In Section \ref{sec:average-speed}, we look at the effects of COVID-19 lockdown on fixed broadband upload and download speeds. Section \ref{sec:packet-loss-analysis} examines packet loss during lockdown. We discuss our findings in Section \ref{sec:discussion} and conclude and discuss future work in Section \ref{sec:conclusion}.
 
 \section{Related Work}
 \label{sec:related-work}
