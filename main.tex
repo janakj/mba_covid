@@ -103,12 +103,12 @@ The MBA program records user network data usage, and also suspends throughput me
 
 Our key findings can be summarized as follows:
 \begin{itemize}
-    \item We found a significant increase in data usage, consistent with lockdown timeline and observations made by other researchers.
+    \item We find a significant increase in data usage, consistent with lockdown timeline and observations made by other researchers.
     \item The traffic spike in rural areas is initially shorter and less pronounced than in metro areas, however, we see the trend start to reverse by June 2020.
-    \item Our data suggests that users in metro areas react to government recommendations faster and more drastically than users in less populated areas.
+    \item Our data suggest that users in metro areas react to government recommendations faster and more drastically than users in less populated areas.
     \item We see a significant increase in daytime weekend traffic from March to May 2020. By June the levels return to their normal pre-lockdown levels, suggesting that users might have complied with stay-at-home recommendations only initially.
     \item Consistent with others, we see the weekday daytime traffic pattern morphing into the weekend pattern.
-    \item We saw a slight 5\% decrease in average speed for about 60-70\% of users and also found a significant almost 50\% increase in packet loss for some users in mid-March 2020, suggesting that increased internet usage may have caused network congestion.
+    \item We see a slight 5\% decrease in average speed for about 60-70\% of users and also found a significant almost 50\% increase in packet loss for some users in mid-March 2020, suggesting that increased internet usage may have caused network congestion.
     %with levels returning to normal by the end of the month, suggesting that network operators addressed increasing network congestion swiftly.
 \end{itemize}
 
@@ -379,21 +379,21 @@ Finally, other network measurements exist that might provide complementary infor
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper, we studied the data collected through the FCC MBA program from January 2019 to June 2020. Our goal was to understand the performance of fixed broadband internet in the United States before and during the COVID-19 pandemic, and also to look for clues about changing users' behavior based on their data usage patterns.
+In this paper, we studied the data collected through the FCC MBA program from January 2019 to June 2020. Our goal was to understand the performance of fixed broadband internet in the United States before and during the COVID-19 pandemic, and also to look for clues about changes to user behavior based on their data usage patterns.
 
-We uploaded the FCC MBA raw data from January 2019 to June 2020 into a Google Cloud BigQuery database, cleaned and pre-processed it, and then analyzed using Google Cloud Datalab (Jupyter) notebooks. We then analyzed the data from multiple perspectives: by geography and population size, by weekdays and weekends, and over the course of a day.
+We uploaded the FCC MBA raw data from January 2019 to June 2020 into a Google Cloud BigQuery database, cleaned and pre-processed it, and then analyzed using Google Cloud Datalab (Jupyter) notebooks. We attempted to look at the data from multiple perspectives: by geography and population size, by weekdays and weekends, and over the course of the day.
 
-Overall, we found a significant increase in fixed broadband data usage consistent with the lockdown timeline. Our observations from the FCC MBA data are more or less consistent with the observations that others made using data from different vantage points (e.g., ISP, IXP, network services). We reviewed and summarized some of the existing work in Section \ref{sec:related-work} for context.
+Overall, we found a significant increase in fixed broadband data usage consistent with the lockdown timeline. Our observations from the FCC MBA data are more or less consistent with the observations that others made using data from different vantage points (e.g., ISPs, IXPs, network service providers). We reviewed and summarized some of the existing work in Section \ref{sec:related-work} for context.
 
-Broken down by geography and population density, our analysis shows traffic spikes in both rural and metro areas. However, the rural traffic spike is initially shorter and less pronounced. Towards June 2020 we see comparable traffic level values in metro and rural areas. Our data suggests that users in metro areas react to government recommendations faster and more swiftly than users in less populated areas.
+Broken down by geography and population density, our analysis shows traffic spikes in both rural and metro areas. However, the rural traffic spike is initially shorter and less pronounced. Towards June 2020, we see comparable traffic level values in metro and rural areas. Our data suggest that users in metro areas react to government recommendations faster and more swiftly than users in less populated areas.
 
-We further attempted to correlate local ordinances with county-level usage patterns for Los Angeles county. There, we saw the first traffic spike on March 14, a day after many schools in the county shutdown. Another spike came after the March 16 White House stay-at-home order. We note that our geography and demographic analysis is partially limited by older (2018) unit profile and unit census datasets and fairly small number of test units at county level.
+We further attempted to correlate local ordinances with county-level usage patterns for Los Angeles county. There, we saw the first traffic spike on March 14, a day after many schools in the county shutdown. Another spike came after the March 16 White House stay-at-home order. We note that our geography and demographic analysis is partially limited by older (2018) unit profile and unit census datasets and fairly small number of test units at the county level.
 
 Looking at weekday and weekend traffic patterns, we saw a significant increase in daytime weekend traffic from March to May 2020. By June the levels return to their normal pre-lockdown levels, suggesting that users might have complied with stay-at-home recommendations only initially. Consistent with others, we see the weekday daytime traffic pattern changing into the weekend pattern, with a significant increase of uploaded and downloaded data during the day. We attribute most of that increase to distance learning and work from home.
 
-Our packet loss analysis uncovered a slight 5\% decrease in average speed for about 60-70\% of users. We also found significant almost 50\% increase in packet loss for some users in mid-March 2020, with levels returning to normal by the end of the month, suggesting that network operators might have addressed increasing network congestion swiftly.
-
 Our analysis of the average hourly downloaded and uploaded data indicates that the policies related to COVID-19, such as lockdown, stay-at-home order, work from home recommendation, etc., increase the usage of internet in the United States on both weekdays and weekends.
+
+Our average speed analysis uncovered a slight 5\% decrease in average speed for about 60-70\% of users. We also found a significant almost 50\% increase in packet loss for some users starting mid-March 2020.
 
 \subsection{Future Work}
 \label{sec:future-work}
