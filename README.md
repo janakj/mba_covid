@@ -1,6 +1,6 @@
 # Social Distancing and the Internet: What Can Network Performance Measurements Tell Us?
 
-# Authors
+## Authors
 
 Jessica De Oliveira Moreira, Amey Praveen Pasarkar, Wenjun Chen, Wenkai Hu, [Jan Janak](https://www.cs.columbia.edu/~janakj), [Henning Schulzrinne](https://www.cs.columbia.edu/~hgs)
 
