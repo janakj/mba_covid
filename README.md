@@ -1,5 +1,9 @@
 # Social Distancing and the Internet: What Can Network Performance Measurements Tell Us?
 
-Authors: Jessica De Oliveira Moreira, Amey Praveen Pasarkar, Wenjun Chen, Wenkai Hu, Jan Janak, Henning Schulzrinne
+# Authors
+
+Jessica De Oliveira Moreira, Amey Praveen Pasarkar, Wenjun Chen, Wenkai Hu, [Jan Janak](https://www.cs.columbia.edu/~janakj), [Henning Schulzrinne](https://www.cs.columbia.edu/~hgs)
+
+## Abstract
 
 The COVID-19 pandemic and related restrictions forced many to work, learn, and socialize from home over the internet. There appears to be consensus that internet infrastructure in the developed world handled the resulting traffic surge well. In this paper, we study network measurement data collected by the Federal Communication Commission's (FCC) Measuring Broadband America (MBA) program before and during the pandemic in the United States. We analyze the data to understand the impact of lockdown orders on the performance of fixed broadband internet infrastructure across the US, and also attempt to correlate internet usage patterns with the changing behavior of users during lockdown. We found the key metrics such as change in data usage to be generally consistent with the literature. Through additional analysis, we found differences between metro and rural areas, changes in weekday, weekend, and hourly internet usage patterns, and indications of network congestion for some users.
