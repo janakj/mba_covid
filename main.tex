@@ -12,17 +12,19 @@
 \usepackage{microtype}
 \usepackage{graphicx}
 \usepackage[binary-units,per-mode=symbol]{siunitx}
-\usepackage{cite}
 \usepackage{float}
 \usepackage{lipsum}
 
-\IEEEtriggeratref{29}
-
 \ifCLASSOPTIONcompsoc
   \usepackage[caption=false, font=normalsize, labelfont=sf, textfont=sf]{subfig}
+  \usepackage[nocompress]{cite}
 \else
   \usepackage[caption=false, font=footnotesize]{subfig}
+  \usepackage{cite}
 \fi
+
+\IEEEtriggercmd{\newpage}
+\IEEEtriggeratref{29}
 
 \newcommand{\papertitle}{Social Distancing and the Internet: What Can Network Performance Measurements Tell Us?}
 
@@ -54,15 +56,15 @@
         \href{mailto:janakj@cs.columbia.edu}{\color{black}Jan Janak}\IEEEauthorrefmark{3},
         \href{mailto:hgs@cs.columbia.edu}{\color{black}Henning Schulzrinne}\IEEEauthorrefmark{3}
     }
-    \IEEEauthorblockA{
+    \IEEEauthorblockA{%
         \IEEEauthorrefmark{1}Barnard College, New York, USA
     }
-    \IEEEauthorblockA{
+    \IEEEauthorblockA{%
         \IEEEauthorrefmark{2}Fu Foundation School of Engineering and Applied Science, Columbia University, New York, USA
     }
-    \IEEEauthorblockA{
+    \IEEEauthorblockA{%
         \IEEEauthorrefmark{3}Department of Computer Science, Columbia University, New York, USA
-    }
+    }%
     Email:
     jdm2240@barnard.edu,
     \{%
@@ -73,7 +75,7 @@
     \{%
       \href{mailto:janakj@cs.columbia.edu}{\color{black}janakj},%
       \href{mailto:hgs@cs.columbia.edu}{\color{black}hgs}%
-    \}@cs.columbia.edu
+    \}@cs.columbia.edu%
     \thanks{Jessica De Oliveira Moreira, Amey Praveen Pasarkar, Wenjun Chen, and Wenkai Hu contributed equally to this research. The work of Jessica De Oliveira Moreira was supported by Craig Newmark Philanthropies. Corresponding authors: Jan Janak; Henning Schulzrinne.}
 }
 
@@ -326,7 +328,7 @@ In order to understand how the COVID-19 outbreak impacted the average download s
 % ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
 % \end{equation}
 
-Figure \ref{fig:downloadspeed2020} shows the result in the form of a Cumulative Distributed Function (CDF). We see that approximately 60\% of the users experienced a decrease in their average download speed from January to March 2020. However, the decrease was not too significant, since for most of the users, the decrease was smaller than 5\%. Therefore, while a significant number of users experienced a decrease in average download speed as other studies suggest, not many experienced a severe decrease.
+\figurename~\ref{fig:downloadspeed2020} shows the result in the form of a Cumulative Distributed Function (CDF). We see that approximately 60\% of the users experienced a decrease in their average download speed from January to March 2020. However, the decrease was not too significant, since for most of the users, the decrease was smaller than 5\%. Therefore, while a significant number of users experienced a decrease in average download speed as other studies suggest, not many experienced a severe decrease.
 
 Cooper argued that although some ISPs were able to keep up with the increase in internet consumption, some cities felt the impact of the increase in data consumption leading users to experience a decrease in their download speed, e.g., the download speed in New York City decreased by 24\% in March \cite{cooper}.
 
@@ -350,7 +352,7 @@ Similarly, we calculate the average upload speed ratio from January to March 202
 % ratio= ((av.speed.Mar - av.speed.Jan)/ av.speed.Jan)*100
 % \end{equation}
 
-Figure \ref{fig:uploadspeed2020} shows the result. Approximately 70\% of users saw their average upload speed decreasing from January to March 2020. As people transitioned most of their activities online, e.g., work from home, remote learning, and video conferences, an increase in uploaded data volumes was expected (as Figure \ref{fig:uploadspeed2020} shows) and, consequently, a decrease in the average upload speed. Similarly to the situation observed with the download speed, while 70\% of consumers experienced a decrease in their upload speed, this decrease was also modest, mostly less of 5\%.
+\figurename~\ref{fig:uploadspeed2020} shows the result. Approximately 70\% of users saw their average upload speed decreasing from January to March 2020. As people transitioned most of their activities online, e.g., work from home, remote learning, and video conferences, an increase in uploaded data volumes was expected (as \figurename~\ref{fig:uploadspeed2020} shows) and, consequently, a decrease in the average upload speed. Similarly to the situation observed with the download speed, while 70\% of consumers experienced a decrease in their upload speed, this decrease was also modest, mostly less of 5\%.
 
 % \begin{figure}
 % \centering
@@ -418,6 +420,7 @@ Interesting insights into user behavior during lockdown might be perhaps obtaine
 We have only analyzed a subset of the metrics provided by the FCC MBA dataset. Our study could be expanded by analyzing metrics such as latency, VoIP and media streaming performance, DNS performance, and others. Additionally, studying network performance by broadband connection type (cable, fiber, satellite) might provide additional insights. 
 
 \section*{Acknowledgment}
+\addcontentsline{toc}{section}{Acknowledgment}
 \label{sec:acknowledgment}
 
 Jessica De Oliveira Moreira was funded by Craig Newmark Philanthropies while working on the project. She would also like to thank to the DIMACS REU Summer 2020 Research program and the Barnard Computer Science department for additional support.
